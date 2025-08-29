@@ -11,17 +11,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         :root {
-            --pink-light: #f9d9d9;
-            --pink-medium: #f7b7bd;
-            --pink-dark: #d97c84;
-            --peach-light: #ffe8e2;
-            --peach-medium: #fce2d7;
-            --peach-dark: #f2bdb8;
-            --shadow-light: rgba(255, 192, 203, 0.3);
-            --text-dark: #333;
-            --text-accent: #4a0104;
-            --error-red: #cc0000; /* Added for error messages */
-            --success-green: #28a745; /* Added for success messages */
+            --pink-light: #F8E8EE; /* Softer pink */
+            --pink-medium: #F2D1D1; /* Warmer pink */
+            --pink-dark: #E0A8A8; /* Deeper pink, still soft */
+            --peach-light: #FFF0F5; /* More pinkish peach */
+            --peach-medium: #FCE4EC; /* Brighter, romantic peach */
+            --peach-dark: #F7CAC9; /* Richer peach */
+            --shadow-light: rgba(224, 168, 168, 0.4); /* Softer, themed shadow */
+            --text-dark: #4A4A4A; /* Softer dark grey */
+            --text-accent: #8B0000; /* Romantic maroon */
+            --error-red: #cc0000;
+            --success-green: #28a745;
         }
 
         * {
@@ -50,8 +50,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.75rem 1rem; /* Adjusted padding for mobile */
-            border-bottom: 1px solid var(--pink-medium);
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--pink-dark); /* Changed border color */
             font-weight: bold;
             position: sticky;
             top: 0;
@@ -61,10 +61,10 @@
 
         .logo {
             font-family: 'Pacifico', cursive;
-            font-size: 1.5rem; /* Slightly larger for better visibility */
-            color: var(--pink-dark);
+            font-size: 1.5rem;
+            color: var(--text-accent); /* Changed logo color */
             user-select: none;
-            padding: 0.2rem 0; /* Add padding for touch target */
+            padding: 0.2rem 0;
         }
 
         nav {
@@ -77,12 +77,12 @@
             font-size: 1rem;
             color: var(--text-dark);
             transition: color 0.3s ease;
-            padding: 0.5rem 0; /* Add padding for touch target */
-            outline: none; /* Remove default outline */
+            padding: 0.5rem 0;
+            outline: none;
         }
 
         nav a:hover {
-            color: var(--pink-dark);
+            color: var(--text-accent); /* Changed hover color */
             cursor: pointer;
         }
 
@@ -96,22 +96,21 @@
         .cake-animation-button:focus,
         .gallery-item:focus,
         .praycard:focus {
-            outline: 3px solid var(--pink-dark); /* Stronger, themed outline */
+            outline: 3px solid var(--text-accent); /* Stronger, themed outline */
             outline-offset: 2px;
-            box-shadow: 0 0 0 5px var(--pink-medium); /* Additional glow for emphasis */
+            box-shadow: 0 0 0 5px var(--pink-dark); /* Additional glow for emphasis */
         }
-
 
         /* Hamburger for mobile */
         .hamburger {
             display: none;
             flex-direction: column;
             justify-content: space-around;
-            width: 28px; /* Larger touch target */
-            height: 24px; /* Larger touch target */
+            width: 28px;
+            height: 24px;
             cursor: pointer;
-            padding: 4px; /* Invisible padding for easier tap */
-            outline: none; /* Remove default outline */
+            padding: 4px;
+            outline: none;
         }
 
         .hamburger div {
@@ -126,36 +125,36 @@
         .mobile-nav {
             display: none;
             position: fixed;
-            top: 60px; /* Adjust based on header height */
+            top: 60px;
             right: 0;
-            width: 75%; /* Slightly wider for content */
-            max-width: 280px; /* Max width for larger phones */
+            width: 75%;
+            max-width: 280px;
             background-color: var(--peach-medium);
             box-shadow: -4px 44px 10px var(--shadow-light);
-            padding: 1.5rem; /* More padding */
-            animation: slideIn 0.3s ease-out forwards; /* Smoother animation */
+            padding: 1.5rem;
+            animation: slideIn 0.3s ease-out forwards;
             z-index: 999;
-            border-radius: 8px 0 0 8px; /* More rounded corners */
+            border-radius: 8px 0 0 8px;
         }
 
         .mobile-nav a {
             display: block;
-            margin-bottom: 1.2rem; /* More spacing */
-            font-size: 1.15rem; /* Slightly larger font */
+            margin-bottom: 1.2rem;
+            font-size: 1.15rem;
             font-weight: 600;
             color: var(--text-dark);
             transition: color 0.2s ease;
-            padding: 0.5rem 0; /* Add padding for touch target */
-            outline: none; /* Remove default outline */
+            padding: 0.5rem 0;
+            outline: none;
         }
 
         .mobile-nav a:hover {
-            color: var(--pink-dark);
+            color: var(--text-accent); /* Changed hover color */
         }
 
         @keyframes slideIn {
             from {
-                right: -300px; /* Match max-width + padding */
+                right: -300px;
                 opacity: 0;
             }
             to {
@@ -166,18 +165,18 @@
 
         /* Page container */
         main {
-            max-width: 960px; /* Slightly wider for larger screens */
-            margin: 1.5rem auto 4rem auto; /* More margin for breathing room */
-            padding: 0 1.2rem; /* Adjusted padding */
+            max-width: 960px;
+            margin: 1.5rem auto 4rem auto;
+            padding: 0 1.2rem;
         }
 
         /* Title for sections */
         h2.section-title {
             font-family: 'Dancing Script', cursive;
-            font-size: 2.2rem; /* Larger for impact */
-            color: var(--pink-dark);
+            font-size: 2.2rem;
+            color: var(--text-accent); /* Changed title color */
             text-align: center;
-            margin: 3rem 0 1.5rem 0; /* More vertical spacing */
+            margin: 3rem 0 1.5rem 0;
             user-select: none;
             position: relative;
             padding-bottom: 0.5rem;
@@ -191,7 +190,7 @@
             transform: translateX(-50%);
             width: 80px;
             height: 3px;
-            background-color: var(--pink-medium);
+            background-color: var(--pink-dark); /* Changed underline color */
             border-radius: 2px;
         }
 
@@ -210,22 +209,22 @@
             width: 300px;
             min-height: 300px;
             border-radius: 18px;
-            box-shadow: 6px 6px 15px var(--pink-dark);
+            box-shadow: 6px 6px 15px rgba(139, 0, 0, 0.4); /* Romantic maroon shadow */
             display: flex;
-            flex-direction: column; /* Changed to column to stack cake and text */
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            overflow: hidden; /* Changed from visible to hidden for cake overflow */
+            overflow: hidden;
             padding: 1rem;
             position: relative;
         }
 
         .music-player-container {
-            background: var(--pink-light);
+            background: var(--pink-light); /* Changed background */
             width: 300px;
             border-radius: 18px;
             padding: 1.5rem;
-            box-shadow: 6px 6px 15px var(--pink-dark);
+            box-shadow: 6px 6px 15px rgba(139, 0, 0, 0.4); /* Romantic maroon shadow */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -233,7 +232,7 @@
 
         .music-player-container h3 {
             font-family: 'Dancing Script', cursive;
-            color: var(--pink-dark);
+            color: var(--text-accent); /* Changed heading color */
             margin-bottom: 1.2rem;
             user-select: none;
             font-size: 1.8rem;
@@ -244,14 +243,14 @@
             outline: none;
             border-radius: 10px;
             cursor: pointer;
-            box-shadow: 0 2px 8px var(--pink-medium);
+            box-shadow: 0 2px 8px var(--pink-dark); /* Changed shadow color */
         }
 
         .music-player-container figure {
             margin-top:1.5rem;
             border-radius: 14px;
             overflow: hidden;
-            box-shadow: 0 6px 16px var(--pink-medium);
+            box-shadow: 0 6px 16px var(--pink-dark); /* Changed shadow color */
             width: 100%;
         }
 
@@ -264,12 +263,12 @@
         }
 
         .music-player-container figure img:hover {
-            transform: scale(1.03);
+            transform: scale(1.05); /* Slightly larger hover effect */
         }
 
         /* --- Galeri Foto Section --- */
         .gallery-section {
-            background: var(--peach-medium);
+            background: var(--peach-medium); /* Changed background */
             border-radius: 18px;
             padding: 1.5rem;
             user-select: none;
@@ -280,7 +279,7 @@
         .gallery-title {
             font-family: 'Dancing Script', cursive;
             font-size: 2.2rem;
-            color: var(--pink-dark);
+            color: var(--text-accent); /* Changed title color */
             text-align: center;
             margin-bottom: 1.5rem;
             position: relative;
@@ -295,7 +294,7 @@
             transform: translateX(-50%);
             width: 80px;
             height: 3px;
-            background-color: var(--pink-medium);
+            background-color: var(--pink-dark); /* Changed underline color */
             border-radius: 2px;
         }
 
@@ -308,16 +307,16 @@
         .gallery-item {
             border-radius: 14px;
             overflow: hidden;
-            box-shadow: 0 4px 10px var(--pink-medium);
+            box-shadow: 0 4px 10px var(--pink-dark); /* Changed shadow color */
             background: #fff;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
-            outline: none; /* Remove default outline */
+            outline: none;
         }
 
         .gallery-item:hover {
             transform: translateY(-5px) scale(1.03);
-            box-shadow: 0 10px 20px var(--pink-dark);
+            box-shadow: 0 10px 20px var(--text-accent); /* Changed hover shadow color */
             z-index: 2;
         }
 
@@ -342,13 +341,12 @@
             height: 100%;
             width: 100%;
             aspect-ratio: 4 / 3;
-            object-fit: contain; /* Ensure icon/text fits */
+            object-fit: contain;
         }
         .gallery-item img.broken-image::before {
-            content: '🖼️ Gambar Rusak'; /* Unicode character for picture frame */
+            content: '🖼️ Gambar Rusak';
             display: block;
         }
-
 
         /* --- Kartu Doa Section --- */
         .praycards-section {
@@ -375,7 +373,7 @@
         }
 
         .praycards-container::-webkit-scrollbar-thumb {
-            background: var(--pink-medium);
+            background: var(--pink-dark); /* Changed scrollbar thumb color */
             border-radius: 10px;
             border: 3px solid var(--peach-light);
         }
@@ -390,58 +388,65 @@
             text-align: center;
             font-weight: 600;
             font-size: 0.95rem;
-            color: var(--pink-dark);
+            color: var(--text-accent); /* Changed text color */
             cursor: default;
             user-select: none;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             scroll-snap-align: start;
             flex-shrink: 0;
-            outline: none; /* Remove default outline */
+            outline: none;
         }
 
         .praycard:nth-child(odd) {
-            background: var(--pink-light);
+            background: var(--pink-light); /* Changed background */
         }
 
         .praycard:nth-child(even) {
-            background: var(--peach-light);
+            background: var(--peach-light); /* Changed background */
         }
 
         .praycard:hover {
             transform: translateY(-8px);
-            box-shadow: 6px 10px 18px var(--pink-dark);
+            box-shadow: 6px 10px 18px rgba(139, 0, 0, 0.4); /* Romantic maroon shadow */
         }
 
         /* --- Message Section --- */
         .message-section {
-            background: var(--peach-medium);
+            background: var(--peach-medium); /* Changed background */
             max-width: 900px;
             margin: 3rem auto;
             padding: 2rem;
             border-radius: 20px;
-            box-shadow: 0 0 25px var(--pink-medium);
+            box-shadow: 0 0 25px rgba(139, 0, 0, 0.3); /* Romantic maroon shadow */
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 2rem;
-            flex-wrap: wrap;
+            gap: 1.5rem;
             justify-content: center;
         }
 
         .message-text {
-            flex: 1 1 50%;
-            min-width: 280px;
             font-size: 1.25rem;
-            color: var(--pink-dark);
+            color: var(--text-accent); /* Changed text color */
             font-weight: 600;
             font-family: 'Dancing Script', cursive;
             user-select: none;
             text-align: center;
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: opacity 0.5s ease-in-out, max-height 0.5s ease-in-out;
+        }
+
+        .message-text.show {
+            opacity: 1;
+            max-height: none;
         }
 
         .message-text h3 {
             font-size: 2.2rem;
             margin-bottom: 0.8rem;
-            color: var(--pink-dark);
+            color: var(--text-accent); /* Changed heading color */
         }
 
         .message-text p {
@@ -452,7 +457,6 @@
         }
 
         .message-images {
-            flex: 0 0 180px;
             display: flex;
             flex-direction: column;
             gap: 0.8rem;
@@ -471,6 +475,29 @@
 
         .message-images img:hover {
             transform: scale(1.05);
+        }
+
+        .toggle-message-btn {
+            background-color: var(--text-accent); /* Changed button color */
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            outline: none;
+            margin-top: 1rem;
+        }
+
+        .toggle-message-btn:hover {
+            background-color: var(--pink-dark); /* Changed hover color */
+            transform: translateY(-2px);
         }
 
         /* Responsive Adjustments */
@@ -623,7 +650,7 @@
 
             /* Responsive adjustment for gallery grid on small screens */
             .gallery-grid {
-                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* Adjusted for smaller screens */
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
                 gap: 0.8rem;
             }
         }
@@ -713,7 +740,7 @@
         @keyframes showVelas {
             to {
                 opacity: 1;
-                transform: translate(-50%, -50%); /* Final position */
+                transform: translate(-50%, -50%);
             }
         }
 
@@ -723,62 +750,74 @@
             }
         }
 
-        /* Smoke animation */
-        .smoke {
+        /* New styles for smoke effect */
+        .cake-container .smoke {
             position: absolute;
-            top: -20px; /* Adjust to appear from candle top */
+            top: -20px; /* Same position as .fuego */
             left: 50%;
-            transform: translateX(-50%);
-            width: 10px;
-            height: 10px;
-            background: rgba(150, 150, 150, 0.5); /* Greyish color for smoke */
+            margin-left: -10px; /* Adjust to center the smoke */
+            width: 20px;
+            height: 20px;
+            background: rgba(150, 150, 150, 0.5); /* Greyish smoke color */
             border-radius: 50%;
             opacity: 0;
-            z-index: 9; /* Below fire, above cake */
-            animation: none; /* Initially no animation */
+            transform: translate(-50%, 0);
+            pointer-events: none; /* Ensure it doesn't interfere with clicks */
         }
 
-        .smoke.animate-smoke {
-            animation: smoke-puff 1.5s ease-out forwards;
+        .cake-container .smoke.show-smoke {
+            animation: smoke-puff 2.5s ease-out forwards; /* Animation duration */
         }
 
         @keyframes smoke-puff {
             0% {
-                transform: translateX(-50%) translateY(0) scale(0.5);
+                transform: translate(-50%, 0) scale(0.5);
                 opacity: 0.5;
             }
+            25% {
+                transform: translate(-50%, -10px) scale(0.8);
+                opacity: 0.7;
+            }
+            50% {
+                transform: translate(-50%, -20px) scale(1);
+                opacity: 0.5;
+            }
+            75% {
+                transform: translate(-55%, -30px) scale(1.2); /* Slight left wobble */
+                opacity: 0.2;
+            }
             100% {
-                transform: translateX(-50%) translateY(-50px) scale(1.5);
+                transform: translate(-45%, -40px) scale(1.5); /* Slight right wobble and fade out */
                 opacity: 0;
             }
-            }
+        }
 
 
-        .cake-container #cake-svg { /* Renamed ID to avoid conflict */
+        .cake-container #cake-svg {
             display: block;
             position: relative;
-            margin: 0 auto; /* Adjusted margin */
-            width: 200px; /* Set explicit width */
-            height: 200px; /* Set explicit height */
-            overflow: hidden; /* Allow SVG content to overflow if needed */
+            margin: 0 auto;
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
         }
 
         .cake-container .cake-text {
-            color: var(--pink-dark); /* Adjusted color to theme */
-            font-family: 'Dancing Script', cursive; /* Adjusted font to theme */
-            font-weight: 700; /* Adjusted font weight */
-            font-style: normal; /* Removed italic */
+            color: var(--text-accent); /* Adjusted color to theme */
+            font-family: 'Dancing Script', cursive;
+            font-weight: 700;
+            font-style: normal;
             text-align: center;
-            margin-top: 1rem; /* Added margin */
+            margin-top: 1rem;
             user-select: none;
         }
         .cake-container .cake-text h1 {
-            font-size: 1.8em; /* Adjusted font size */
+            font-size: 1.8em;
             margin-bottom: 0.5rem;
         }
         .cake-container .cake-text p {
-            font-size: 1.2em; /* Adjusted font size */
-            font-family: 'Baloo 2', cursive; /* Adjusted font to theme */
+            font-size: 1.2em;
+            font-family: 'Baloo 2', cursive;
             color: var(--text-dark);
         }
 
@@ -792,7 +831,7 @@
 
         /* New styles for Message Box */
         .message-box-container {
-            background: var(--peach-medium);
+            background: var(--peach-medium); /* Changed background */
             border-radius: 18px;
             padding: 2rem;
             box-shadow: 4px 4px 12px var(--shadow-light);
@@ -800,7 +839,6 @@
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
-            /* Added for fade-in animation */
             opacity: 0;
             transition: opacity 1s ease-in;
         }
@@ -819,27 +857,27 @@
         .message-box-form label {
             font-weight: 600;
             color: var(--text-dark);
-            margin-bottom: 0.2rem; /* Added space between label and input */
+            margin-bottom: 0.2rem;
         }
 
         .message-box-form input[type="text"],
         .message-box-form textarea {
             padding: 0.8rem;
-            border: 1px solid var(--pink-medium);
+            border: 1px solid var(--pink-dark); /* Changed border color */
             border-radius: 8px;
             font-family: 'Baloo 2', cursive;
             font-size: 1rem;
             color: var(--text-dark);
-            background-color: var(--peach-light);
+            background-color: var(--peach-light); /* Changed background */
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
-            outline: none; /* Remove default outline */
+            outline: none;
         }
 
         .message-box-form input[type="text"]:focus,
         .message-box-form textarea:focus {
             outline: none;
-            border-color: var(--pink-dark);
-            box-shadow: 0 0 0 3px var(--pink-medium), 0 0 8px var(--pink-dark); /* Added glow */
+            border-color: var(--text-accent); /* Changed focus border color */
+            box-shadow: 0 0 0 3px var(--pink-dark), 0 0 8px var(--text-accent); /* Changed glow colors */
         }
 
         .message-box-form textarea {
@@ -848,7 +886,7 @@
         }
 
         .message-box-form button {
-            background-color: var(--pink-dark);
+            background-color: var(--text-accent); /* Changed button color */
             color: #fff;
             padding: 0.8rem 1.5rem;
             border: none;
@@ -857,15 +895,15 @@
             font-size: 1.1rem;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease;
-            display: flex; /* To center icon and text */
+            display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem; /* Space between icon and text */
-            outline: none; /* Remove default outline */
+            gap: 0.5rem;
+            outline: none;
         }
 
         .message-box-form button:hover {
-            background-color: var(--text-accent);
+            background-color: var(--pink-dark); /* Changed hover color */
             transform: translateY(-2px);
         }
 
@@ -880,7 +918,7 @@
             text-align: center;
             margin-top: 1rem;
             font-weight: bold;
-            color: var(--pink-dark);
+            color: var(--text-accent); /* Changed status color */
         }
 
         /* Validation error message style */
@@ -915,7 +953,7 @@
 
         /* Style for the new button */
         .cake-animation-button {
-            background-color: var(--pink-dark);
+            background-color: var(--text-accent); /* Changed button color */
             color: #fff;
             padding: 0.8rem 1.5rem;
             border: none;
@@ -924,12 +962,12 @@
             font-size: 1rem;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease;
-            margin-top: 0.5rem; /* Space above the button */
-            outline: none; /* Remove default outline */
+            margin-top: 0.5rem;
+            outline: none;
         }
 
         .cake-animation-button:hover {
-            background-color: var(--text-accent);
+            background-color: var(--pink-dark); /* Changed hover color */
             transform: translateY(-2px);
         }
 
@@ -948,7 +986,7 @@
         }
 
         .play-pause-btn {
-            background-color: var(--pink-dark);
+            background-color: var(--text-accent); /* Changed button color */
             color: #fff;
             border: none;
             border-radius: 50%;
@@ -965,7 +1003,7 @@
         }
 
         .play-pause-btn:hover {
-            background-color: var(--text-accent);
+            background-color: var(--pink-dark); /* Changed hover color */
             transform: scale(1.05);
         }
 
@@ -979,7 +1017,7 @@
         .progress-bar {
             width: 100%;
             height: 8px;
-            background: var(--pink-medium);
+            background: var(--pink-dark); /* Changed progress bar color */
             border-radius: 5px;
             cursor: pointer;
             -webkit-appearance: none;
@@ -992,7 +1030,7 @@
             appearance: none;
             width: 16px;
             height: 16px;
-            background: var(--pink-dark);
+            background: var(--text-accent); /* Changed thumb color */
             border-radius: 50%;
             cursor: pointer;
             transition: background-color 0.3s ease;
@@ -1001,7 +1039,7 @@
         .progress-bar::-moz-range-thumb {
             width: 16px;
             height: 16px;
-            background: var(--pink-dark);
+            background: var(--text-accent); /* Changed thumb color */
             border-radius: 50%;
             cursor: pointer;
             transition: background-color 0.3s ease;
@@ -1009,7 +1047,7 @@
 
         .progress-bar:hover::-webkit-slider-thumb,
         .progress-bar:hover::-moz-range-thumb {
-            background: var(--text-accent);
+            background: var(--pink-dark); /* Changed hover thumb color */
         }
 
         .time-display {
@@ -1019,31 +1057,322 @@
             color: var(--text-dark);
         }
 
-        /* Lyrics Styles */
-        /* Removed #lyrics styles as it's replaced by #lyrics-box */
-
         /* New style for #lyrics-box */
         #lyrics-box {
             margin-top: 1.5rem;
-            height: 60px; /* Fixed height */
+            height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             padding: 0 1rem;
-            background: var(--peach-light);
+            background: var(--peach-light); /* Changed background */
             border-radius: 12px;
             box-shadow: 0 2px 8px var(--shadow-light);
             font-family: 'Baloo 2', cursive;
-            color: var(--pink-dark);
+            color: var(--text-accent); /* Changed text color */
             font-weight: bold;
-            font-size: 1em; /* Ensure font size is readable */
-            overflow: hidden; /* Hide overflow if text is too long */
+            font-size: 1em;
+            overflow: hidden;
+        }
+
+        /* Styles for the overlay canvas */
+        #animationCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            pointer-events: none;
+            opacity: 1;
+            transition: opacity 1s ease-out;
+        }
+
+        #animationCanvas.hidden {
+            opacity: 0;
+        }
+
+        /* Overlay for the intro animation */
+        #introOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--peach-light); /* Match body background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 1s ease-out;
+            flex-direction: column; /* Added for vertical alignment of envelope and text */
+        }
+
+        #introOverlay.fade-out {
+            opacity: 0;
+            pointer-events: none; /* Disable interactions after fade-out */
+        }
+
+        /* Envelope styles */
+        .envelope-container {
+            position: relative;
+            width: 250px;
+            height: 150px;
+            cursor: pointer;
+            perspective: 1000px;
+            transition: transform 0.5s ease-in-out;
+            margin-bottom: 20px; /* Space between envelope and text */
+        }
+
+        .envelope-container.open {
+            transform: translateY(-50px); /* Lift up when opened */
+        }
+
+        .envelope {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: var(--pink-medium);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .envelope-front {
+            z-index: 2;
+        }
+
+        .envelope-back {
+            z-index: 1;
+        }
+
+        .envelope-flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background-color: var(--pink-dark);
+            border-radius: 0 0 10px 10px;
+            transform-origin: top;
+            transition: transform 0.5s ease-in-out;
+            z-index: 3;
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+        }
+
+        .envelope-container.open .envelope-flap {
+            transform: rotateX(180deg);
+            z-index: 0; /* Send flap behind when open */
+        }
+
+        .envelope-paper {
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            width: 80%;
+            height: 80%;
+            background-color: var(--pink-medium);
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: var(--text-accent);
+            text-align: center;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        /* New styles for the animated "Klik Here" text */
+        .animated-click-btn {
+            background-color: var(--text-accent);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            padding: 0.6rem 1.2rem; /* Reduced padding */
+            font-weight: 700;
+            font-size: 1rem; /* Reduced font size */
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.7s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+            position: absolute; /* Position relative to introOverlay */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, 60px); /* Initial position: 60px down from center */
+            opacity: 0; /* Initially hidden */
+            pointer-events: none; /* Disable clicks until visible */
+            z-index: 5; /* Higher than .envelope-front (z-index: 2) and .envelope-flap (z-index: 3) */
+            font-family: 'Dancing Script', cursive; /* Apply font */
+        }
+
+        .animated-click-btn.show {
+            opacity: 1;
+            transform: translate(-50%, -80px); /* Adjusted animation target to be higher, relative to envelope */
+            pointer-events: auto; /* Enable clicks */
+        }
+
+        .animated-click-btn:hover {
+            background-color: var(--pink-dark);
+            transform: translate(-50%, -80px) scale(1.05); /* Adjusted hover target */
+        }
+
+        /* Responsive adjustments for envelope */
+        @media (max-width: 768px) {
+            .envelope-container {
+                width: 200px;
+                height: 120px;
+            }
+            .envelope-paper {
+                font-size: 2rem;
+            }
+            .animated-click-btn {
+                font-size: 0.9rem; /* Further reduced for smaller screens */
+                padding: 0.5rem 1rem; /* Further reduced padding */
+                transform: translate(-50%, -70px); /* Adjusted animation target */
+            }
+            .animated-click-btn:hover {
+                transform: translate(-50%, -70px) scale(1.05);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .envelope-container {
+                width: 180px;
+                height: 100px;
+            }
+            .envelope-paper {
+                font-size: 1.8rem;
+            }
+            .animated-click-btn {
+                font-size: 0.8rem; /* Even smaller for very small screens */
+                padding: 0.4rem 0.8rem; /* Even smaller padding */
+                transform: translate(-50%, -60px); /* Adjusted animation target */
+            }
+            .animated-click-btn:hover {
+                transform: translate(-50%, -60px) scale(1.05);
+            }
+        }
+
+        /* New styles for the love slider */
+        .love-slider-container {
+            width: 80%;
+            margin: 1.5rem auto 0.5rem auto;
+            text-align: center;
+        }
+
+        .love-slider-container p {
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .love-slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(to right, var(--pink-light), var(--pink-dark));
+            border-radius: 5px;
+            outline: none;
+            transition: opacity .2s;
+            cursor: pointer;
+        }
+
+        .love-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 30px;
+            height: 30px;
+            background: var(--text-accent);
+            border-radius: 50%;
+            cursor: grab;
+            position: relative;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: background-color 0.3s ease, transform 0.1s ease;
+        }
+
+        .love-slider::-webkit-slider-thumb:active {
+            cursor: grabbing;
+            transform: scale(1.1);
+        }
+
+        .love-slider::-webkit-slider-thumb::before {
+            content: '❤️'; /* Heart emoji */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.2em; /* Adjust size as needed */
+            color: white; /* Color of the heart */
+            line-height: 1; /* Ensure vertical alignment */
+        }
+
+        .love-slider::-moz-range-thumb {
+            width: 30px;
+            height: 30px;
+            background: var(--text-accent);
+            border-radius: 50%;
+            cursor: grab;
+            position: relative;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: background-color 0.3s ease, transform 0.1s ease;
+        }
+
+        .love-slider::-moz-range-thumb:active {
+            cursor: grabbing;
+            transform: scale(1.1);
+        }
+
+        /* For Firefox, you might need to use pseudo-elements for the emoji, but it's less straightforward */
+        /* .love-slider::-moz-range-thumb::before { content: '❤️'; } */
+
+        .love-percentage-display {
+            font-weight: bold;
+            color: var(--text-accent);
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+            display: block;
+        }
+
+        /* Adjustments for smaller screens for the slider */
+        @media (max-width: 480px) {
+            .love-slider-container {
+                width: 90%;
+            }
+            .love-slider::-webkit-slider-thumb,
+            .love-slider::-moz-range-thumb {
+                width: 25px;
+                height: 25px;
+            }
+            .love-slider::-webkit-slider-thumb::before {
+                font-size: 1em;
+            }
+            .love-percentage-display {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 
 <body>
+    <!-- Intro Overlay -->
+    <div id="introOverlay">
+        <div class="envelope-container" id="envelopeContainer">
+            <div class="envelope envelope-back"></div>
+            <div class="envelope-flap"></div>
+            <div class="envelope-paper" id="envelopePaper">
+                <!-- The paper inside the envelope, now empty of "Klik Here" text -->
+            </div>
+        </div>
+        <!-- Moved "Klik Here" text outside the envelope container again, relative to introOverlay -->
+        <button class="animated-click-btn" id="animatedClickHere">Klik lagi sayang</button>
+    </div>
+
+    <!-- Canvas for animations -->
+    <canvas id="animationCanvas"></canvas>
+
     <header>
         <nav role="navigation" aria-label="Primary menu">
             <a href="#musik" tabindex="0">Musik</a>
@@ -1052,9 +1381,7 @@
             <a href="#pesan" tabindex="0">Kotak Pesan</a>
         </nav>
         <div class="hamburger" role="button" aria-label="Toggle menu" aria-expanded="false" tabindex="0" id="hamburgerBtn" aria-controls="mobileMenu">
-            <div></div>
-            <div></div>
-            <div></div>
+            <i class="fas fa-bars"></i>
         </div>
     </header>
     <nav class="mobile-nav" id="mobileMenu" aria-hidden="true">
@@ -1068,12 +1395,13 @@
 
         <!-- Birthday Message -->
         <section class="message-section" aria-label="Ucapan ulang tahun sayang">
-            <h2 class="section-title">Ucapan Ulang Tahun</h2> <!-- Added h2 for better hierarchy -->
-            <div class="message-text" tabindex="0">
+            <h2 class="section-title">Ucapan Ulang Tahun</h2>
+            <button id="toggleMessageBtn" class="toggle-message-btn">Lihat Ucapan <i class="fas fa-gift"></i></button>
+            <div id="birthdayMessageContent" class="message-text" aria-hidden="true">
                 <h3>Happy Birthday Kakak</h3>
-                <p>"Selamat ulang tahun, kakak ana. Semoga hari ini seindah senyummu dan hari yang paling bahagia dan terbaik untukmu, maafin aku yg selama ini banyak salah dan selalu ngecewain kamu."</p>
+                <p>"Selamat ulang tahun, kakak ana. Semoga hari ini seindah senyum kak ana dan hari yang paling bahagia dan terbaik buat kak ana, menjadi hari yang penuh kebahagiaan, penuh doa-doa baik, dan membawa banyak hal terbaik dalam hidupmu. Semoga apa pun yang kak ana impikan bisa tercapai satu per satu, dan semoga kak ana selalu diberi kesehatan, panjang umur, serta dilindungi oleh Allah di setiap langkah. maafin aku yg selama ini banyak salah dan selalu ngecewain kak ana."</p>
                 <p>"Maaf karena terlalu berharap, maaf sering mengganggu waktunya dari telfon, chat dan yang lain."</p>
-                <p>"maaf juga untuk streak sama unfoll nya, sebenarnya alasannya emang pengen hapus perasaan (walaupun sampe sekarang sek ada) hehe sulit bagi seorang bocil kalo ga unfoll, jujur ya mbak mungkin aku emang sering cerita deket orang/pengen deket sama orang, cuma baru kali ini bisa sampe kecintaan😅"</p>
+                <p>"maaf juga untuk streak sama unfoll nya, maaf karena udah menaruh perasaan diantara pertemanan, jujur ya mbak mungkin aku emang sering cerita deket orang/pengen deket sama orang, cuma baru kali ini bisa sampe kecintaan😅"</p>
                 <p>"makasih buat semua waktunya🤍"</p>
             </div>
             <div class="message-images" aria-hidden="true">
@@ -1084,7 +1412,7 @@
         </section>
         <!-- Musik & Cake Section -->
         <section id="musik" aria-label="Playlist musik dan kue ulang tahun" class="music-cake-section">
-            <h2 class="section-title">Musik & Kue Ulang Tahun</h2> <!-- Added h2 for better hierarchy -->
+            <h2 class="section-title">Musik & Kue Ulang Tahun</h2>
             <div class="cake-container">
                 <!-- New Cake HTML Structure -->
                 <div class="velas">
@@ -1093,15 +1421,11 @@
                     <div class="fuego"></div>
                     <div class="fuego"></div>
                     <div class="fuego"></div>
+                    <!-- Smoke element for each candle -->
+                    <div class="smoke"></div>
                 </div>
-                <!-- Smoke elements, one for each candle -->
-                <div class="smoke" id="smoke1"></div>
-                <div class="smoke" id="smoke2"></div>
-                <div class="smoke" id="smoke3"></div>
-                <div class="smoke" id="smoke4"></div>
-                <div class="smoke" id="smoke5"></div>
 
-                <svg id="cake-svg" version="1.1" x="0px" y="0px" width="200px" height="500px" viewBox="0 0 200 500"
+                <svg id="cake-svg" version="1.1" x="0px" y="0px" width="300px" height="500px" viewBox="0 0 200 500"
                     enable-background="new 0 0 200 500" xml:space="preserve" aria-hidden="true">
                     <path fill="#a88679" d="M173.667-13.94c-49.298,0-102.782,0-147.334,0c-3.999,0-4-16.002,0-16.002
                     c44.697,0,96.586,0,147.334,0C177.667-29.942,177.668-13.94,173.667-13.94z">
@@ -1124,7 +1448,7 @@
                         <animate id="relleno_2" attributeName="d" calcMode="spline" keySplines="0 0 1 1; 0 0 1 1; 0 0 0.58 1"
                             begin="indefinite" dur="0.5s" fill="freeze" values="
                                       M100-178.521c1.858,0,3.364,1.506,3.364,3.363c0,0,0,33.17,0,44.227
-                    c0,19.144,0,57.431,0,76.574c0,10.152,0,40.607,0,40.607c0,1.858-1.506,3.364-3.364,3.364l0,0c-1.858,0-3.364-1.506-3.364-3.364c0,0,0-30.455,0-40.607c0-19.145,0-57.432,0-76.575c0-11.057,0-44.226,0-44.226C96.636-177.015,98.142-178.521,100-178.521
+                    c0,19.144,0,57.431,0,76.574c0,10.152,0,40.607,0,40.607c0,1.858-1.506,3.364-3.364,3.364l0,0c-1.858,0-3.364-1.506-3.364-3.364c0,0,0-30.455,0-40.607c0-19.145,0-57.432,0-76.576c0-11.057,0-44.225,0-44.225C96.636,268.763,98.142,267.257,100,267.257
                     L100,267.257z
                                       ;
                                       M100,267.257c1.858,0,3.364,1.506,3.364,3.363c0,0,0,33.17,0,44.227
@@ -1181,8 +1505,84 @@
                     c-4.109,0.65-3.01-10.006,0-10.006C37.129,451.394,149.379,451.394,173.667,451.394z
                                       " />
                     </path>
+                            <path fill="#a88679" d="M173.667,21.571c-33.174,0-111.467,0-147.334,0c-4,0-4-16.002,0-16.002c39.836,0,105.982,0,147.334,0
+		C177.668,5.569,177.667,21.571,173.667,21.571z">
+            <animate id="bizcocho_1" attributeName="d" calcMode="spline"
+                keySplines="0 0 1 1; 0 0 1 1; 0 0 1 1; 0.25 0 1 1; 0 0 1 1; 0.25 0 0.6 1" begin="indefinite" dur="0.8s"
+                fill="freeze" values="
+                          M173.667,21.571c-33.174,0-111.467,0-147.334,0c-4,0-4-16.002,0-16.002c39.836,0,105.982,0,147.334,0
+		C177.668,5.569,177.667,21.571,173.667,21.571z
+                          ;
+                          M173.667,459.569c-33.197,16.002-110.782,16.002-147.334,0c-3.664-1.604,1.614-15.617,5.337-14.153
+		c40.702,16.002,94.289,16.104,136.505,0.103C171.917,444.1,177.271,457.832,173.667,459.569z
+                          ;
+                          M171.817,475.571c-39.361-3.001-105.438-2.571-143.556,0c-3.991,0.27-7.377-14.736-3.387-15.014
+		c41.553-2.888,104.421-3.121,150.51-0.233C179.378,460.574,175.806,475.875,171.817,475.571z
+                          ;
+                          M171.817,459.564c-38.8-12.188-104.504-13.762-143.556,0c-3.772,1.329-7.961-12.604-4.178-13.905
+		c40.864-14.064,105.114-15.52,151.918-0.973C179.822,445.874,175.634,460.762,171.817,459.564z
+                          ;
+                          M173.667,475.571c-46.376-5.005-105.924-4.003-147.334,0c-3.981,0.385-3.479-15.421,0.479-16.002
+		c43.087-6.327,97.705-7.083,146.855,0.438C177.621,460.613,177.644,476,173.667,475.571z
+                          ;
+                          M173.667,474.117c-46.376,1.866-105.638,2.01-147.334,0c-3.995-0.192-3.52-16.144,0.479-16.002
+		c43.794,1.55,96.341,1.541,145.723,0C176.532,457.99,177.663,473.956,173.667,474.117z
+                          ;
+                          M173.667,475.571c-46.512,0-105.486,0-147.334,0c-3.999,0-4-16.002,0-16.002c43.566,0,97.96,0,147.334,0
+		C177.667,459.569,177.666,475.571,173.667,475.571z
+                          " />
+        </path>
+                    <path fill="#fefae9" d="M104.812,113.216c0,3.119-2.164,5.67-4.812,5.67c-2.646,0-4.812-2.551-4.812-5.67c0-5.594,0-16.782,0-22.375
+	c0-5.143,0-15.427,0-20.568c0-7.333,0-21.998,0-29.33c0-5.523,0-16.569,0-22.092c0-3.295,0-9.885,0-13.181
+	C95.188,2.551,97.353,0,100,0c2.648,0,4.812,2.551,4.812,5.669c0,3.248,0,9.743,0,12.991c0,5.428,0,16.284,0,21.711
+	c0,7.618,0,22.854,0,30.472c0,4.952,0,14.854,0,19.807C104.812,96.292,104.812,107.576,104.812,113.216z">
+            <animate id="crema" attributeName="d" calcMode="spline"
+                keySplines="0 0 1 1; 0 0 1 1; 0 0 1 1; 0.25 0 1 1; 0 0 1 1; 0 0 0.58 1" begin="bizcocho_3.end" dur="2s"
+                fill="freeze" values="
+                          M104.812,113.216c0,3.119-2.164,5.67-4.812,5.67c-2.646,0-4.812-2.551-4.812-5.67c0-5.594,0-16.782,0-22.375
+	c0-5.143,0-15.427,0-20.568c0-7.333,0-21.998,0-29.33c0-5.523,0-16.569,0-22.092c0-3.295,0-9.885,0-13.181
+	C95.188,2.551,97.353,0,100,0c2.648,0,4.812,2.551,4.812,5.669c0,3.248,0,9.743,0,12.991c0,5.428,0,16.284,0,21.711
+	c0,7.618,0,22.854,0,30.472c0,4.952,0,14.854,0,19.807C104.812,96.292,104.812,107.576,104.812,113.216z
+                          ;
+                          M104.812,405.897c0,3.119-2.164,5.67-4.812,5.67c-2.646,0-4.812-2.551-4.812-5.67c0-5.594,0-16.782,0-22.376
+	c0-5.143,0-15.426,0-20.568c0-7.332,0-21.997,0-29.33c0-5.522,0-16.568,0-22.092c0-3.295,0-9.885,0-13.181
+	c0-3.118,2.165-5.669,4.812-5.669c2.648,0,4.812,2.551,4.812,5.669c0,3.247,0,9.743,0,12.991c0,5.428,0,16.283,0,21.711
+	c0,7.618,0,22.854,0,30.473c0,4.951,0,14.854,0,19.807C104.812,388.972,104.812,400.256,104.812,405.897z
+                          ;
+                          M111.873,411.567c-3.119,0-9.226,0-11.874,0c-2.646,0-7.748,0-10.867,0c-7.086,0-12.698,0-18.292,0
+	c-6.592,0-12.871,7.371-19.166,3.008c-10.043-6.961-7.776-10.169,2.991-17.745c12.61-8.873,27.713,1.994,25.919-7.531
+	c-2.589-13.742,11.008-14.513,11.365-17.789c0.441-4.051,4.235-11.107,8.051-8.175c3.113,2.393,1.007,8.008,0,13.159
+	c-1.871,9.569,8.058,2.113,9.494,14.155c2.592,21.732,21.184-0.675,29.309,7.976c5.216,5.553,18.413,5.552,15.426,12.942
+	c-3.131,7.745-15.825-4.369-23.8,2.903C126.261,418.271,118.301,411.567,111.873,411.567z
+                          ;
+                          M111.873,411.567c-3.119,0-9.226,0-11.874,0c-2.646,0-9.734,4.069-12.853,4.069
+	c-7.086,0-10.712-4.069-16.306-4.069c-6.592,0-12.12,6.013-19.166,3.008c-7.053-3.008-7.458,2.026-18.659,1.165
+	c-6.832-0.525-7.522-3.034-7.533-6.265c-0.037-10.336,22.073-2.452,36.613-2.628c10.234-0.124,19.856-1.439,37.905-2.102
+	c16.642-0.61,32.699,1.552,46.009,1.927c12.438,0.351,29.663-8.99,31.532,3.315c0.773,5.093-5.605,3.342-11.211,9.579
+	c-5.093,5.667-7.59-4.605-12.965-3.832c-8.269,1.189-14.962-8.537-22.937-1.265C126.261,418.271,118.301,411.567,111.873,411.567z
+                          ;
+                          M110.946,413.652c-2.904-1.137-8.405-2.748-12.446-0.97c-6.099,2.685-7.273,10.358-13.253,8.242
+	c-7.843-2.775-8.953-5.008-14.546-5.01c-24.653-0.011-4.849,26.507-18.264,26.507c-12.377,0,5.791-33.537-19.422-26.682
+	c-7.703,2.095-9.806-0.942-9.817-4.173c-0.037-10.336,24.357-4.544,38.897-4.72c10.234-0.124,19.856-1.439,37.905-2.102
+	c16.642-0.61,32.699,1.552,46.009,1.927c12.438,0.351,28.973-8.865,31.532,3.315c1.449,6.896,0.318,15.624-3.874,15.624
+	c-7.619,0-1.788-15.192-19.243-7.111c-7.581,3.51-15.963-9.738-26.669,1.066C120.644,426.744,118.381,416.561,110.946,413.652z
+                          ;
+                          M111.547,413.9c-2.969-0.956-8.775-0.949-13.167-0.5c-14.667,1.5-8.325,16.508-14.667,16.666
+	c-6.667,0.166-0.167-13.5-13.013-14.151c-30.471-1.545-5.572,46.651-18.987,46.651c-12.377,0,10.333-50.166-18.667-44.5
+	c-7.835,1.531-9.537-1.417-9.548-4.647c-0.037-10.336,23.675-5.177,38.215-5.353c10.234-0.124,20.618-1.671,38.667-2.333
+	c16.642-0.61,32.023,1.458,45.333,1.833c12.438,0.351,33.819-8.431,33.199,4.001c-0.532,10.666,0.414,26.166-5.245,25.833
+	c-7.606-0.447-2.954-31.5-19.243-18.899c-7.985,6.177-17.658-5.969-27.377,5.732C118.88,434.066,121.38,417.067,111.547,413.9z
+                          ;
+                          M111.547,415.233c-6.667-0.834-9.667,4.667-13.833,3.333c-19.649-6.291-8.158,22.176-14.5,22.334
+	c-6.667,0.166,2.833-18-13.333-22.167c-29.544-7.615-9.667,43.833-20.167,43.833c-10.333,0,8.004-55.006-16.833-39
+	c-7.5,4.833-9.508-3.78-9.299-7.004c0.799-12.329,23.592-7.153,38.132-7.329c10.234-0.124,20.238-1.505,38.287-2.167
+	c16.642-0.61,32.903,1.125,46.213,1.5c12.438,0.351,35.058-5.579,31.863,6.451c-5.532,20.833,1.25,28.216-4.409,27.883
+	c-7.606-0.447-6.058-37.895-20.62-23.333c-10.167,10.166-15.972-0.747-25,12C119.547,443.568,121.798,416.515,111.547,415.233z
+                          " />
+                    </path>
                     <rect x="10" y="475.571" fill="#fefae9" width="180" height="4" />
                 </svg>
+                
                 <div class="cake-text">
                     <h1>happy birthday!</h1>
                 </div>
@@ -1247,9 +1647,9 @@
 
                 <p style="font-size: 0.9em; color: var(--text-dark); margin-top: 1rem; text-align: center;">
                     <span style="font-weight: bold;">Do you think I have forgotten?.</span><br>
-Lagu "About You" memiliki makna seseorang yang tidak pernah melupakan orang yang ia cintai, baik itu perasaan atau kenangan yang pernah dialami bersama.</p>
+Lagu "About You" memiliki makna seseorang yang tidak pernah melupakan yang ia cintai, baik itu perasaan atau kenangan yang pernah dialami bersama.</p>
                 <figure>
-                    <img src="IMG-20250824-WA0067.jpg" alt="Pasangan muda berpegangan tangan sambil tersenyum di taman dengan latar belakang pepohonan hijau yang cerah" loading="lazy" style="width: 100%; display: block;"/>
+                    <img src="IMG-20250824-WA0067.jpg" alt="Pasangan muda berpegangan tangan sambil tersenyum di taman dengan latar belakang pepohonan hijau yang cerah" loading="lazy"/>
                 </figure>
             </div>
         </section>
@@ -1283,9 +1683,9 @@ Lagu "About You" memiliki makna seseorang yang tidak pernah melupakan orang yang
         <section id="kartu-doa" aria-label="Kartu Doa" class="praycards-section">
             <h2 class="section-title">Kartu Doa</h2>
             <div class="praycards-container" role="list">
-                <div class="praycard" role="listitem" tabindex="0">Doa 1<br>Semoga kak ana bahagia selalu💔</div>
-                <div class="praycard" role="listitem" tabindex="0">Doa 2<br>Semoga kak ana sehat selalu💞</div>
-                <div class="praycard" role="listitem" tabindex="0">Doa 3<br>Semoga bisa dapetin hal yang selama ini kamu perjuangin ❤️</div>
+                <div class="praycard" role="listitem" tabindex="0">Doa 1<br>Semoga kak ana bahagia selalu<i class="fas fa-heart-broken"></i></div>
+                <div class="praycard" role="listitem" tabindex="0">Doa 2<br>Semoga kak ana sehat selalu<i class="fas fa-heart"></i></div>
+                <div class="praycard" role="listitem" tabindex="0">Doa 3<br>Semoga bisa dapetin hal yang selama ini kak ana perjuangin <i class="fas fa-heart"></i></div>
                 <div class="praycard" role="listitem" tabindex="0">Doa 4<br>Semoga dimudahkan segala urusannya, dan dikelilingi orang-orang baik</div>
                 <div class="praycard" role="listitem" tabindex="0">Doa 5<br>Semoga hal-hal baik selalu beriringan</div>
                 <div class="praycard" role="listitem" tabindex="0">Doa 6<br>Semoga tahun ini menjadi tahun yang lebih baik dari tahun sebelumnya</div>
@@ -1295,11 +1695,43 @@ Lagu "About You" memiliki makna seseorang yang tidak pernah melupakan orang yang
         <section id="kartu-harapan" aria-label="Kartu Harapan" class="praycards-section">
             <h2 class="section-title">Kartu Harapan</h2>
             <div class="praycards-container" role="list">
-                <div class="praycard" role="listitem" tabindex="0">Harapan 1<br>Semoga kak ana selalu menemukan alasan untuk tersenyum 🌸</div>
-                <div class="praycard" role="listitem" tabindex="0">Harapan 2<br>Semoga perjalanan ke depan penuh kejutan indah ✨</div>
-                <div class="praycard" role="listitem" tabindex="0">Harapan 3<br>Semoga semua cita-citamu tercapai 🌟</div>
-                <div class="praycard" role="listitem" tabindex="0">Harapan 4<br>Semoga semakin kuat menghadapi setiap tantangan 💪</div>
-                <div class="praycard" role="listitem" tabindex="0">Harapan 5<br>Jangan sampai asing ya, tetep deket kayak dulu ✨</div>
+                <div class="praycard" role="listitem" tabindex="0">Harapan 1<br>Semoga kak ana selalu menemukan alasan untuk tersenyum <i class="fas fa-flower"></i></div>
+                <div class="praycard" role="listitem" tabindex="0">Harapan 2<br>Semoga perjalanan ke depan penuh kejutan indah <i class="fas fa-sparkles"></i></div>
+                <div class="praycard" role="listitem" tabindex="0">Harapan 3<br>Semoga semua cita-cita kakak tercapai <i class="fas fa-star"></i></div>
+                <div class="praycard" role="listitem" tabindex="0">Harapan 4<br>Semoga semakin kuat menghadapi setiap tantangan <i class="fas fa-fist-raised"></i></div>
+                <div class="praycard" role="listitem" tabindex="0">Harapan 5<br>Jangan sampai asing ya, tetep deket kayak dulu <i class="fas fa-sparkles"></i></div>
+                <div class="praycard" role="listitem" tabindex="0">Harapan 6<br>Semoga ada ruang di hati kak ana, buat aku singgah <i class="fas fa-smile"></i></div>
+            </div>
+        </section>
+
+        <!-- New Effort Section -->
+        <section id="effort-section" class="message-section" aria-label="Tentang usaha pembuatan web ini">
+            <button id="toggleEffortBtn" class="toggle-message-btn">Pesan akhir<i class="fas fa-code"></i></button>
+            <div id="effortContent" class="message-text" aria-hidden="true">
+                <p>
+                    "Web sederhana ini memang nggak seberapa, tapi dibuat dengan sepenuh hati.  
+                    Semoga bisa jadi kenang-kenangan kecil yang bikin kak ana tersenyum.  
+                    Terima kasih untuk semuanya.  
+                    Semoga setiap baris kode di dalamnya bisa nyimpen doa-doa baik buat kak ana 🤍."
+                </p>
+                <h2>TAMBAHAN</h2>
+                <p>"maaf ya kalo kata'/pesannnya nya gitu' aja😅"</p>
+                <p>"tapi buat web ini butuh effort yg besar juga kok, kalo pesan emang ga bisa nyusun kata soalnya😅"</p>
+                <p>"maaf ya buat kemarin karena udah ngirim link web dulu tapi gimana setelah dapat web yang sekarang ini, suka ga nih (jawabnya di bawah ini ya)"</p>
+                <p>"kalo butuh chat aja, kan katanya minta buat jadi segalanya, mbak ana udah jadi segalanya nih, jadi kalo mbak ana butuh apa' bilang aja, pasti ada kok"</p>
+                <p>"maaf ya kalo aku sering berpikiran buruk ke mbak ana"</p>
+                <p>"mbak ana bilang selesaikan baik', ga bisa mbak soalnya cuma aku yg cuma punya perasaan, jelas lah mbak ana kek ngerasa ga ada apa'."</p>
+                <p>"di kolom kirim pesan kasih alasan dong, masak aku taunya dari temen mbak ana."</p>
+                <p>"padahal aku ya selama pbak kepikiran pengen nelfon, cerita', pengen nanya'. aduh malah dapet berita ga enak🙂"</p>
+                <p>"dan kalo selesai tetep pertemanan mungkin sulit ya, dari sikap mbak ana kemarin terlalu ngasih harapan soalnya jadi sulit kalo udah jatuh gini"</p>
+                <p>"maaf ya kalo kesannya alai, gitu emang kalo udah kecintaan😅. sampek sekarang aja sek kecintaan"</p>
+                <p>"oh iya request kado dong, gatau nih mau ngasih apa. udah ngasih perasaan ditolak soalnya takut kadonya juga ditolak"</p>
+                <!-- Love Slider -->
+                <div class="love-slider-container">
+                    <p>How much do you like this gift?</p>
+                    <input type="range" min="0" max="100" value="0" class="love-slider" id="loveSlider">
+                    <span id="lovePercentageDisplay" class="love-percentage-display">0%</span>
+                </div>
             </div>
         </section>
 
@@ -1318,6 +1750,7 @@ Lagu "About You" memiliki makna seseorang yang tidak pernah melupakan orang yang
                     <textarea id="messageContent" name="messageContent" required minlength="10" maxlength="500" placeholder="Tuliskan pesan di sini..."></textarea>
                     <span id="messageContentError" aria-live="polite"></span>
                 </div>
+                <input type="hidden" name="lovePercentage" id="lovePercentageInput" value="50">
                 <button type="submit" id="sendMessageBtn">Kirim Pesan</button>
                 <p id="messageStatus" aria-live="polite"></p>
             </form>
@@ -1326,6 +1759,31 @@ Lagu "About You" memiliki makna seseorang yang tidak pernah melupakan orang yang
 
     <script>
         (() => {
+            // --- Intro Animation Logic ---
+            const introOverlay = document.getElementById('introOverlay');
+            const envelopeContainer = document.getElementById('envelopeContainer');
+            const animatedClickHere = document.getElementById('animatedClickHere'); // Now refers to the button
+
+            // Always show the intro overlay on page load
+            document.body.style.overflow = 'hidden'; // Prevent scrolling during intro
+            introOverlay.style.display = 'flex'; // Ensure overlay is visible
+
+            envelopeContainer.addEventListener('click', () => {
+                envelopeContainer.classList.add('open');
+                // After envelope opens, show the "Klik Here" button with animation
+                setTimeout(() => {
+                    animatedClickHere.classList.add('show');
+                }, 500); // Delay to sync with envelope opening animation (0.5s)
+            });
+
+            animatedClickHere.addEventListener('click', () => {
+                introOverlay.classList.add('fade-out');
+                setTimeout(() => {
+                    introOverlay.style.display = 'none';
+                    document.body.style.overflow = 'auto'; // Re-enable scrolling
+                }, 1000); // Match fade-out duration
+            });
+
             // --- Hamburger Menu Functionality ---
             const hamburger = document.getElementById('hamburgerBtn');
             const mobileMenu = document.getElementById('mobileMenu');
@@ -1365,6 +1823,7 @@ Lagu "About You" memiliki makna seseorang yang tidak pernah melupakan orang yang
             const messageContentInput = document.getElementById('messageContent');
             const senderNameError = document.getElementById('senderNameError');
             const messageContentError = document.getElementById('messageContentError');
+            const lovePercentageInput = document.getElementById('lovePercentageInput'); // Get the hidden input
 
             // Add fade-in animation on load for the message box
             window.addEventListener('load', () => {
@@ -1460,6 +1919,7 @@ Lagu "About You" memiliki makna seseorang yang tidak pernah melupakan orang yang
 
                 const senderName = senderNameInput.value;
                 const messageContent = messageContentInput.value;
+                const lovePercentage = lovePercentageInput.value; // Get the love percentage value
 
                 try {
                     const response = await fetch(messageForm.action, {
@@ -1470,7 +1930,8 @@ Lagu "About You" memiliki makna seseorang yang tidak pernah melupakan orang yang
                         },
                         body: JSON.stringify({
                             name: senderName,
-                            message: messageContent
+                            message: messageContent,
+                            lovePercentage: lovePercentage // Include love percentage in the payload
                         })
                     });
 
@@ -1481,6 +1942,12 @@ Lagu "About You" memiliki makna seseorang yang tidak pernah melupakan orang yang
                         messageForm.reset(); // Clear the form
                         clearError(senderNameError); // Clear any lingering errors
                         clearError(messageContentError);
+                        // Reset love slider to default after successful submission
+                        const loveSlider = document.getElementById('loveSlider');
+                        const lovePercentageDisplay = document.getElementById('lovePercentageDisplay');
+                        loveSlider.value = 50;
+                        lovePercentageDisplay.textContent = '50%';
+                        lovePercentageInput.value = 50;
                     } else {
                         const data = await response.json();
                         let errorMessage = "Gagal mengirim pesan. Silakan coba lagi.";
@@ -1514,7 +1981,7 @@ Lagu "About You" memiliki makna seseorang yang tidak pernah melupakan orang yang
             const formInputs = messageForm.querySelectorAll('input[type="text"], textarea');
             formInputs.forEach(input => {
                 input.addEventListener('focus', () => {
-                    input.style.boxShadow = '0 0 0 3px var(--pink-medium), 0 0 8px var(--pink-dark)';
+                    input.style.boxShadow = '0 0 0 3px var(--pink-dark), 0 0 8px var(--text-accent)';
                 });
                 input.addEventListener('blur', () => {
                     input.style.boxShadow = ''; // Clear box-shadow on blur
@@ -1523,17 +1990,9 @@ Lagu "About You" memiliki makna seseorang yang tidak pernah melupakan orang yang
 
             // --- Cake Animation Control ---
             const startCakeAnimBtn = document.getElementById('startCakeAnim');
-            // Corrected IDs for SVG elements
-            const bizcocho1 = document.getElementById('bizcocho_1'); // This ID does not exist in the provided SVG.
-            const relleno1 = document.getElementById('relleno_1');
-            const bizcocho2 = document.getElementById('bizcocho_2');
-            const relleno2 = document.getElementById('relleno_2');
-            const bizcocho3 = document.getElementById('bizcocho_3');
-            const crema = document.getElementById('crema'); // This ID does not exist in the provided SVG.
-
             const velas = document.querySelector('.velas');
             const fuegos = document.querySelectorAll('.fuego');
-            const smokes = document.querySelectorAll('.smoke');
+            const smokeElement = document.querySelector('.smoke'); // Get the smoke element
 
             let loadingInterval;
             let dotCount = 0;
@@ -1564,20 +2023,15 @@ Lagu "About You" memiliki makna seseorang yang tidak pernah melupakan orang yang
              * @returns {Promise<void>} A promise that resolves when all SVG animations are complete.
              */
             async function playCakeAnimation() {
-                // Define animation steps with their durations
-                // Note: bizcocho_1 and crema IDs are not present in the provided SVG.
-                // The SVG paths have animate tags with IDs bizcocho_3, relleno_2, bizcocho_2, relleno_1.
-                // Adjusting to use the correct IDs from the SVG.
                 const animations = [
-                    { element: document.getElementById('relleno_1'), duration: 500 }, // Corresponds to the first path animation
-                    { element: document.getElementById('bizcocho_2'), duration: 500 }, // Corresponds to the second path animation
-                    { element: document.getElementById('relleno_2'), duration: 500 }, // Corresponds to the third path animation
-                    { element: document.getElementById('bizcocho_3'), duration: 300 }  // Corresponds to the fourth path animation
-                    // No direct 'crema' animation found in the provided SVG structure.
+                    { element: document.getElementById('bizcocho_1'), duration: 500 },
+                    { element: document.getElementById('relleno_1'), duration: 500 },
+                    { element: document.getElementById('bizcocho_2'), duration: 500 },
+                    { element: document.getElementById('relleno_2'), duration: 500 },
+                    { element: document.getElementById('bizcocho_3'), duration: 300 }
                 ];
 
                 for (const anim of animations) {
-                    // Check if the element exists before trying to begin the animation
                     if (anim.element && typeof anim.element.beginElement === 'function') {
                         anim.element.beginElement();
                         await new Promise(resolve => setTimeout(resolve, anim.duration));
@@ -1592,39 +2046,28 @@ Lagu "About You" memiliki makna seseorang yang tidak pernah melupakan orang yang
                     startLoadingAnimation();
                     animationStarted = true;
 
-                    // Ensure smoke elements are hidden before starting new animation
-                    smokes.forEach(smoke => {
-                        smoke.classList.remove('animate-smoke');
-                        smoke.style.opacity = '0';
-                    });
+                    await playCakeAnimation();
 
-                    await playCakeAnimation(); // Wait for all SVG animations to complete
-
-                    // Show candles and fire after main animation
                     velas.style.opacity = '1';
                     velas.style.animation = 'in 500ms ease-out forwards, adjust-velas-position 0.1s linear forwards, showVelas 0.5s ease-out forwards';
                     fuegos.forEach(fuego => {
-                        fuego.classList.add('animate-fuego'); // Add class to trigger fire animation
+                        fuego.classList.add('animate-fuego');
                     });
                     stopLoadingAnimation();
                     startCakeAnimBtn.textContent = 'Matikan Api';
                 } else {
-                    // Logic to "turn off fire"
                     fuegos.forEach(fuego => {
-                        fuego.classList.remove('animate-fuego'); // Stop fire animation
-                        fuego.style.opacity = '0'; // Hide fire
+                        fuego.classList.remove('animate-fuego');
+                        fuego.style.opacity = '0';
                     });
-                    velas.style.opacity = '0'; // Hide candles
+                    velas.style.opacity = '0';
 
-                    // Trigger smoke animation for each candle
-                    smokes.forEach(smoke => {
-                        smoke.classList.add('animate-smoke');
-                        // Reset animation by removing and re-adding class
-                        smoke.style.animation = 'none';
-                        void smoke.offsetWidth; // Trigger reflow
-                        smoke.style.animation = null;
-                        smoke.classList.add('animate-smoke');
-                    });
+                    // Show smoke effect when fire is turned off
+                    smokeElement.classList.add('show-smoke');
+                    // Remove smoke class after animation duration (2.5s)
+                    setTimeout(() => {
+                        smokeElement.classList.remove('show-smoke');
+                    }, 2500); // Matches the smoke-puff animation duration
 
                     startCakeAnimBtn.textContent = 'Mulai Animasi Kue';
                     animationStarted = false;
@@ -1635,7 +2078,7 @@ Lagu "About You" memiliki makna seseorang yang tidak pernah melupakan orang yang
             document.querySelectorAll('.gallery-item img').forEach(img => {
                 img.onerror = function() {
                     this.classList.add('broken-image');
-                    this.alt = 'Gambar tidak dapat dimuat'; // Generic alt for broken images
+                    this.alt = 'Gambar tidak dapat dimuat';
                 };
             });
 
@@ -1645,8 +2088,8 @@ Lagu "About You" memiliki makna seseorang yang tidak pernah melupakan orang yang
             const progressBar = document.getElementById('progressBar');
             const currentTimeSpan = document.getElementById('currentTime');
             const totalDurationSpan = document.getElementById('totalDuration');
-            const lyricsBox = document.getElementById('lyrics-box'); // Changed from lyricsContainer
-            const hiddenLyricLines = document.querySelectorAll('#hidden-lyrics p'); // Read from hidden div
+            const lyricsBox = document.getElementById('lyrics-box');
+            const hiddenLyricLines = document.querySelectorAll('#hidden-lyrics p');
 
             function formatTime(seconds) {
                 const minutes = Math.floor(seconds / 60);
@@ -1654,13 +2097,11 @@ Lagu "About You" memiliki makna seseorang yang tidak pernah melupakan orang yang
                 return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
             }
 
-            // Update total duration when audio metadata is loaded
             audio.addEventListener('loadedmetadata', () => {
                 totalDurationSpan.textContent = formatTime(audio.duration);
                 progressBar.max = audio.duration;
             });
 
-            // Play/Pause functionality
             playPauseBtn.addEventListener('click', () => {
                 if (audio.paused) {
                     audio.play();
@@ -1671,25 +2112,22 @@ Lagu "About You" memiliki makna seseorang yang tidak pernah melupakan orang yang
                 }
             });
 
-            // Update progress bar and current time
             audio.addEventListener('timeupdate', () => {
                 progressBar.value = audio.currentTime;
                 currentTimeSpan.textContent = formatTime(audio.currentTime);
-                displayActiveLyric(); // Call new function for lyrics
+                displayActiveLyric();
             });
 
-            // Seek functionality
             progressBar.addEventListener('input', () => {
                 audio.currentTime = progressBar.value;
             });
 
-            // Display active lyric in the lyrics box
             function displayActiveLyric() {
                 let activeLyricText = '';
                 for (let i = 0; i < hiddenLyricLines.length; i++) {
                     const line = hiddenLyricLines[i];
                     const time = parseFloat(line.dataset.time);
-                    const nextLineTime = i + 1 < hiddenLyricLines.length ? parseFloat(hiddenLyricLines[i + 1].dataset.time) : audio.duration + 1; // Add buffer for last line
+                    const nextLineTime = i + 1 < hiddenLyricLines.length ? parseFloat(hiddenLyricLines[i + 1].dataset.time) : audio.duration + 1;
 
                     if (audio.currentTime >= time && audio.currentTime < nextLineTime) {
                         activeLyricText = line.textContent;
@@ -1699,30 +2137,366 @@ Lagu "About You" memiliki makna seseorang yang tidak pernah melupakan orang yang
                 lyricsBox.textContent = activeLyricText;
             }
 
-            // Handle audio ending
             audio.addEventListener('ended', () => {
                 playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
                 progressBar.value = 0;
                 currentTimeSpan.textContent = '0:00';
-                lyricsBox.textContent = ''; // Clear lyrics box on end
+                lyricsBox.textContent = '';
             });
 
-            // Handle audio starting from beginning (e.g., after seeking to 0 or replaying)
             audio.addEventListener('play', () => {
                 if (audio.currentTime === 0) {
-                    lyricsBox.textContent = ''; // Clear lyrics box if starting from 0
+                    lyricsBox.textContent = '';
                 }
             });
 
-            // --- Color Contrast Check (Manual Verification & CSS Adjustments) ---
-            // The current CSS uses:
-            // --text-dark: #333 on --peach-light: #ffe8e2 (Contrast: 10.7:1 - PASS)
-            // --pink-dark: #d97c84 on --peach-medium: #fce2d7 (Contrast: 4.5:1 - PASS)
-            // --pink-dark: #d97c84 on --peach-light: #ffe8e2 (Contrast: 4.5:1 - PASS)
-            // --text-dark: #333 on --pink-light: #f9d9d9 (Contrast: 10.7:1 - PASS)
-            // --text-dark: #333 on white (#fff) (Contrast: 16.1:1 - PASS)
-            // All primary text/background combinations appear to meet WCAG AA.
-            // No specific changes needed based on current values, but new elements should be checked.
+            // --- Birthday Message Toggle Functionality ---
+            const toggleMessageBtn = document.getElementById('toggleMessageBtn');
+            const birthdayMessageContent = document.getElementById('birthdayMessageContent');
+            let messageVisible = false;
+
+            toggleMessageBtn.addEventListener('click', () => {
+                if (messageVisible) {
+                    birthdayMessageContent.classList.remove('show');
+                    birthdayMessageContent.setAttribute('aria-hidden', 'true');
+                    toggleMessageBtn.innerHTML = 'Lihat Ucapan <i class="fas fa-gift"></i>';
+                } else {
+                    birthdayMessageContent.classList.add('show');
+                    birthdayMessageContent.setAttribute('aria-hidden', 'false');
+                    toggleMessageBtn.innerHTML = 'Sembunyikan Ucapan <i class="fas fa-star"></i>';
+                }
+                messageVisible = !messageVisible;
+            });
+
+            // --- New Effort Section Toggle Functionality ---
+            const toggleEffortBtn = document.getElementById('toggleEffortBtn');
+            const effortContent = document.getElementById('effortContent');
+            let effortVisible = false;
+
+            toggleEffortBtn.addEventListener('click', () => {
+                if (effortVisible) {
+                    effortContent.classList.remove('show');
+                    effortContent.setAttribute('aria-hidden', 'true');
+                    toggleEffortBtn.innerHTML = 'Pesan akhir<i class="fas fa-code"></i>';
+                } else {
+                    effortContent.classList.add('show');
+                    effortContent.setAttribute('aria-hidden', 'false');
+                    toggleEffortBtn.innerHTML = 'Sembunyikan Pesan akhir <i class="fas fa-code"></i>';
+                }
+                effortVisible = !effortVisible;
+            });
+
+            // --- Love Slider Functionality ---
+            const loveSlider = document.getElementById('loveSlider');
+            const lovePercentageDisplay = document.getElementById('lovePercentageDisplay');
+            // lovePercentageInput is already defined above in Message Box Functionality
+
+            loveSlider.addEventListener('input', () => {
+                const value = loveSlider.value;
+                lovePercentageDisplay.textContent = `${value}%`;
+                lovePercentageInput.value = value; // Update hidden input value
+            });
+
+            // --- Canvas Animation Script ---
+            const canvas = document.getElementById('animationCanvas');
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            let hearts = [];
+            let confetti = [];
+            let animationFrameId;
+
+            function setCanvasSize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            setCanvasSize();
+            window.addEventListener('resize', setCanvasSize);
+
+            function random(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+
+            const colors = ['#FF69B4', '#FF1493', '#FFD700', '#FFFFFF', '#FF4500']; // HotPink, DeepPink, Gold, White, OrangeRed
+
+            class Particle {
+                constructor(x, y, color, velocity) {
+                    this.x = x;
+                    this.y = y;
+                    this.color = color;
+                    this.velocity = {
+                        x: velocity.x,
+                        y: velocity.y
+                    };
+                    this.alpha = 1;
+                    this.friction = 0.99;
+                    this.gravity = 0.05;
+                }
+
+                draw() {
+                    ctx.save();
+                    ctx.globalAlpha = this.alpha;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, 1.5, 0, Math.PI * 2, false);
+                    ctx.fillStyle = this.color;
+                    ctx.fill();
+                    ctx.restore();
+                }
+
+                update() {
+                    this.velocity.x *= this.friction;
+                    this.velocity.y *= this.friction;
+                    this.velocity.y += this.gravity;
+                    this.x += this.velocity.x;
+                    this.y += this.velocity.y;
+                    this.alpha -= 0.005;
+                }
+            }
+
+            class Firework {
+                constructor(x, y, radius, color, velocity) {
+                    this.x = x;
+                    this.y = y;
+                    this.radius = radius;
+                    this.color = color;
+                    this.velocity = velocity;
+                    this.alpha = 1;
+                    this.particles = [];
+                    this.exploded = false;
+                }
+
+                draw() {
+                    if (!this.exploded) {
+                        ctx.save();
+                        ctx.globalAlpha = this.alpha;
+                        ctx.beginPath();
+                        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+                        ctx.fillStyle = this.color;
+                        ctx.fill();
+                        ctx.restore();
+                    }
+                }
+
+                update() {
+                    if (!this.exploded) {
+                        this.x += this.velocity.x;
+                        this.y += this.velocity.y;
+                        this.velocity.y += 0.02;
+                        this.alpha -= 0.005;
+
+                        if (this.velocity.y >= 0 || this.alpha <= 0.2) {
+                            this.explode();
+                            this.exploded = true;
+                        }
+                    }
+                    this.particles.forEach((particle, index) => {
+                        if (particle.alpha <= 0.05) {
+                            this.particles.splice(index, 1);
+                        } else {
+                            particle.update();
+                        }
+                    });
+                }
+
+                explode() {
+                    const particleCount = 200;
+                    for (let i = 0; i < particleCount; i++) {
+                        const angle = Math.random() * Math.PI * 2;
+                        const speed = random(2, 7);
+                        const velocity = {
+                            x: Math.cos(angle) * speed,
+                            y: Math.sin(angle) * speed
+                        };
+                        this.particles.push(new Particle(this.x, this.y, this.color, velocity));
+                    }
+                }
+            }
+
+            class Heart {
+                constructor(x, y, size, color, velocity) {
+                    this.x = x;
+                    this.y = y;
+                    this.size = size;
+                    this.color = color;
+                    this.velocity = velocity;
+                    this.alpha = 1;
+                    this.rotation = random(0, Math.PI * 2);
+                    this.rotationSpeed = random(-0.05, 0.05);
+                    this.gravity = 0.05;
+                }
+
+                draw() {
+                    ctx.save();
+                    ctx.globalAlpha = this.alpha;
+                    ctx.translate(this.x, this.y);
+                    ctx.rotate(this.rotation);
+                    ctx.fillStyle = this.color;
+                    ctx.beginPath();
+                    ctx.moveTo(0, this.size * 0.4);
+                    ctx.bezierCurveTo(this.size * 0.5, -this.size * 0.2, this.size, this.size * 0.3, 0, this.size);
+                    ctx.bezierCurveTo(-this.size, this.size * 0.3, -this.size * 0.5, -this.size * 0.2, 0, this.size * 0.4);
+                    ctx.closePath();
+                    ctx.fill();
+                    ctx.restore();
+                }
+
+                update() {
+                    this.velocity.y += this.gravity;
+                    this.x += this.velocity.x;
+                    this.y += this.velocity.y;
+                    this.alpha -= 0.004;
+                    this.rotation += this.rotationSpeed;
+                }
+            }
+
+            class Confetti {
+                constructor(x, y, size, color, velocity) {
+                    this.x = x;
+                    this.y = y;
+                    this.size = size;
+                    this.color = color;
+                    this.velocity = velocity;
+                    this.alpha = 1;
+                    this.rotation = random(0, Math.PI * 2);
+                    this.rotationSpeed = random(-0.1, 0.1);
+                    this.gravity = 0.1;
+                    this.shape = Math.random() > 0.5 ? 'square' : 'circle';
+                }
+
+                draw() {
+                    ctx.save();
+                    ctx.globalAlpha = this.alpha;
+                    ctx.translate(this.x, this.y);
+                    ctx.rotate(this.rotation);
+                    ctx.fillStyle = this.color;
+                    ctx.beginPath();
+                    if (this.shape === 'square') {
+                        ctx.rect(-this.size / 2, -this.size / 2, this.size, this.size);
+                    } else {
+                        ctx.arc(0, 0, this.size / 2, 0, Math.PI * 2);
+                    }
+                    ctx.fill();
+                    ctx.restore();
+                }
+
+                update() {
+                    this.velocity.y += this.gravity;
+                    this.x += this.velocity.x;
+                    this.y += this.velocity.y;
+                    this.alpha -= 0.006;
+                    this.rotation += this.rotationSpeed;
+                }
+            }
+
+            let fireworks = [];
+
+            function animate() {
+                animationFrameId = requestAnimationFrame(animate);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                fireworks.forEach((firework, index) => {
+                    firework.update();
+                    firework.draw();
+                    if (firework.exploded && firework.particles.length === 0) {
+                        fireworks.splice(index, 1);
+                    }
+                });
+
+                hearts.forEach((heart, index) => {
+                    heart.update();
+                    heart.draw();
+                    if (heart.alpha <= 0.05 || heart.y > canvas.height) {
+                        hearts.splice(index, 1);
+                    }
+                });
+
+                confetti.forEach((c, index) => {
+                    c.update();
+                    c.draw();
+                    if (c.alpha <= 0.05 || c.y > canvas.height) {
+                        confetti.splice(index, 1);
+                    }
+                });
+            }
+
+            function spawnFirework() {
+                const x = random(canvas.width * 0.2, canvas.width * 0.8);
+                const y = canvas.height;
+                const color = colors[Math.floor(random(0, colors.length))];
+                const velocity = {
+                    x: random(-1, 1),
+                    y: random(-10, -15)
+                };
+                fireworks.push(new Firework(x, y, 3, color, velocity));
+            }
+
+            function spawnHeart() {
+                const x = random(0, canvas.width);
+                const y = random(canvas.height * 0.7, canvas.height * 0.9);
+                const size = random(15, 35);
+                const color = colors[Math.floor(random(0, colors.length))];
+                const velocity = {
+                    x: random(-1, 1),
+                    y: random(-8, -15)
+                };
+                hearts.push(new Heart(x, y, size, color, velocity));
+            }
+
+            function spawnConfetti() {
+                const x = random(0, canvas.width);
+                const y = random(0, canvas.height * 0.2);
+                const size = random(8, 18);
+                const color = colors[Math.floor(random(0, colors.length))];
+                const velocity = {
+                    x: random(-2, 2),
+                    y: random(3, 8)
+                };
+                confetti.push(new Confetti(x, y, size, color, velocity));
+            }
+
+            let fireworkInterval, heartInterval, confettiInterval;
+
+            function startAnimations() {
+                animate();
+
+                for (let i = 0; i < 5; i++) {
+                    spawnFirework();
+                }
+                for (let i = 0; i < 10; i++) {
+                    spawnHeart();
+                }
+                for (let i = 0; i < 20; i++) {
+                    spawnConfetti();
+                }
+
+                fireworkInterval = setInterval(() => {
+                    spawnFirework();
+                }, random(200, 800));
+
+                heartInterval = setInterval(() => {
+                    spawnHeart();
+                }, random(50, 300));
+
+                confettiInterval = setInterval(() => {
+                    spawnConfetti();
+                }, random(20, 150));
+
+                setTimeout(() => {
+                    clearInterval(fireworkInterval);
+                    clearInterval(heartInterval);
+                    clearInterval(confettiInterval);
+                    setTimeout(() => {
+                        canvas.classList.add('hidden');
+                        setTimeout(() => {
+                            cancelAnimationFrame(animationFrameId);
+                            canvas.style.display = 'none';
+                        }, 1000);
+                    }, 1000);
+                }, 10000);
+            }
+
+            // Start canvas animations immediately when the page loads
+            window.addEventListener('load', startAnimations);
+
         })();
     </script>
 </body>
