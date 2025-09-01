@@ -1443,7 +1443,7 @@
                                       " />
                     </path>
                     <path fill="#8b6a60" d="M100-178.521c1.858,0,3.364,1.506,3.364,3.363c0,0,0,33.17,0,44.227
-                    c0,19.144,0,57.431,0,76.574c0,10.152,0,40.607,0,40.607c0,1.858-1.506,3.364-3.364,3.364l0,0c-1.858,0-3.364-1.506-3.364-3.364c0,0,0-30.455,0-40.607c0-19.145,0-57.432,0-76.575c0-11.057,0-44.226,0-44.226C96.636-177.015,98.142-178.521,100-178.521
+                    c0,19.144,0,57.431,0,76.574c0,10.152,0,40.607,0,40.607c0,1.858-1.506,3.364-3.364,3.364l0,0c-1.858,0-3.364-1.506-3.364-3.364c0,0,0-30.455,0-40.607c0-19.145,0-57.432,0-76.576c0-11.057,0-44.225,0-44.225C96.636-177.015,98.142-178.521,100-178.521
                     L100,267.257z">
                         <animate id="relleno_2" attributeName="d" calcMode="spline" keySplines="0 0 1 1; 0 0 1 1; 0 0 0.58 1"
                             begin="indefinite" dur="0.5s" fill="freeze" values="
@@ -1716,16 +1716,17 @@ Lagu "About You" memiliki makna seseorang yang tidak pernah melupakan yang ia ci
                 </p>
                 <h2>TAMBAHAN</h2>
                 <p>"maaf ya kalo kata'/pesannnya nya gitu' aja😅"</p>
+                <p>"web ini memang masih jauh dari kata sempurna, dari faktor aku yg masih pemula, harus belajar outodidak untuk buat ini, dan berbarengan dengan tugas dan kesibukan maba"</p>
                 <p>"tapi buat web ini butuh effort yg besar juga kok, kalo pesan emang ga bisa nyusun kata soalnya😅"</p>
                 <p>"maaf ya buat kemarin karena udah ngirim link web dulu tapi gimana setelah dapat web yang sekarang ini, suka ga nih (jawabnya di bawah ini ya)"</p>
                 <p>"maaf juga sering ganggu tapi kalo butuh chat aja, kan katanya minta buat jadi segalanya, mbak ana udah jadi segalanya nih, jadi kalo mbak ana butuh apa' bilang aja, pasti ada kok"</p>
+                <p>"chat, telfon kek dulu bisa ga sih, udah terlalu nyaman soalnya"</p>
+                <p>"makasih ya udah jadi wanita cantik yang selalu membuat nyaman"</p>
+                <p>"untuk lagu maaf ya aku pake lagu about you, soalnya emang masih ada perasaan sampek sekarang"</p>
                 <p>"maaf aku yang sering berpikiran buruk ke mbak ana"</p>
-                <p>"mbak ana bilang selesaikan baik', ga bisa mbak soalnya cuma aku yg cuma punya perasaan, jelas lah mbak ana kek ngerasa ga ada apa'."</p>
-                <p>"di kolom kirim pesan kasih alasan dong, masak aku taunya dari temen mbak ana."</p>
-                <p>"padahal aku ya selama pbak kepikiran pengen nelfon, cerita', pengen nanya'. aduh malah dapet berita ga enak🙂"</p>
-                <p>"dan kalo selesai tetep pertemanan mungkin sulit ya, dari sikap mbak ana kemarin terlalu ngasih harapan soalnya jadi sulit kalo udah jatuh gini"</p>
                 <p>"oh iya request kado dong, gatau nih mau ngasih apa. udah ngasih perasaan ditolak soalnya takut kadonya juga ditolak"</p>
                 <p>"kalo boleh mau di up di ig web ini, yg udah di filter kok pesannya. gaboleh juga gapapa"</p>
+                <P>"se ga pantas itu emang aku ya buat sama cewe cantik gini😅"</P>
                 <p>"BALASNYA DI SINI AJA YA, JANGAN DI WA😅 (CUMA BIAR KEPAKE AJA KOK KOLOM PESANNYA)"</p>
                 <!-- Love Slider -->
                 <div class="love-slider-container">
@@ -1759,6 +1760,7 @@ Lagu "About You" memiliki makna seseorang yang tidak pernah melupakan yang ia ci
     </main>
 
     <script>
+        
         (() => {
             // --- Intro Animation Logic ---
             const introOverlay = document.getElementById('introOverlay');
@@ -2069,6 +2071,9 @@ Lagu "About You" memiliki makna seseorang yang tidak pernah melupakan yang ia ci
                     setTimeout(() => {
                         smokeElement.classList.remove('show-smoke');
                     }, 2500); // Matches the smoke-puff animation duration
+
+                    // Trigger the new particle animation when candles are "blown out"
+                    blowCandle();
 
                     startCakeAnimBtn.textContent = 'Mulai Animasi Kue';
                     animationStarted = false;
@@ -2389,6 +2394,8 @@ Lagu "About You" memiliki makna seseorang yang tidak pernah melupakan yang ia ci
             }
 
             let fireworks = [];
+            let activeHearts = []; // New array for hearts from candle blow
+            let activeConfetti = []; // New array for confetti from candle blow
 
             function animate() {
                 animationFrameId = requestAnimationFrame(animate);
@@ -2415,6 +2422,24 @@ Lagu "About You" memiliki makna seseorang yang tidak pernah melupakan yang ia ci
                     c.draw();
                     if (c.alpha <= 0.05 || c.y > canvas.height) {
                         confetti.splice(index, 1);
+                    }
+                });
+
+                // Update and draw hearts from candle blow
+                activeHearts.forEach((heart, index) => {
+                    heart.update();
+                    heart.draw();
+                    if (heart.alpha <= 0.05 || heart.y > canvas.height) {
+                        activeHearts.splice(index, 1);
+                    }
+                });
+
+                // Update and draw confetti from candle blow
+                activeConfetti.forEach((c, index) => {
+                    c.update();
+                    c.draw();
+                    if (c.alpha <= 0.05 || c.y > canvas.height) {
+                        activeConfetti.splice(index, 1);
                     }
                 });
             }
@@ -2456,8 +2481,8 @@ Lagu "About You" memiliki makna seseorang yang tidak pernah melupakan yang ia ci
 
             let fireworkInterval, heartInterval, confettiInterval;
 
-            function startAnimations() {
-                animate();
+            function startIntroAnimations() {
+                animate(); // Start the animation loop
 
                 for (let i = 0; i < 5; i++) {
                     spawnFirework();
@@ -2488,15 +2513,70 @@ Lagu "About You" memiliki makna seseorang yang tidak pernah melupakan yang ia ci
                     setTimeout(() => {
                         canvas.classList.add('hidden');
                         setTimeout(() => {
-                            cancelAnimationFrame(animationFrameId);
-                            canvas.style.display = 'none';
+                            // Only cancel animation frame if no other animations are active
+                            if (fireworks.length === 0 && hearts.length === 0 && confetti.length === 0 && activeHearts.length === 0 && activeConfetti.length === 0) {
+                                cancelAnimationFrame(animationFrameId);
+                                canvas.style.display = 'none';
+                            }
                         }, 1000);
                     }, 1000);
                 }, 10000);
             }
 
             // Start canvas animations immediately when the page loads
-            window.addEventListener('load', startAnimations);
+            window.addEventListener('load', startIntroAnimations);
+
+            // --- New blowCandle function for particle effects ---
+            function blowCandle() {
+                canvas.style.display = 'block'; // Ensure canvas is visible
+                canvas.classList.remove('hidden'); // Ensure canvas is not hidden
+
+                const cakeContainer = document.querySelector('.cake-container');
+                const cakeRect = cakeContainer.getBoundingClientRect();
+
+                // Calculate the center of the cake container relative to the canvas
+                const centerX = cakeRect.left + cakeRect.width / 2;
+                const centerY = cakeRect.top + cakeRect.height / 2;
+
+                // Spawn particles (circles)
+                for (let i = 0; i < 100; i++) {
+                    const angle = random(0, Math.PI * 2);
+                    const speed = random(2, 8);
+                    const velocity = {
+                        x: Math.cos(angle) * speed,
+                        y: Math.sin(angle) * speed
+                    };
+                    activeConfetti.push(new Confetti(centerX, centerY, random(5, 15), colors[Math.floor(random(0, colors.length))], velocity));
+                }
+
+                // Spawn hearts
+                for (let i = 0; i < 50; i++) {
+                    const angle = random(0, Math.PI * 2);
+                    const speed = random(1, 6);
+                    const velocity = {
+                        x: Math.cos(angle) * speed,
+                        y: Math.sin(angle) * speed
+                    };
+                    activeHearts.push(new Heart(centerX, centerY, random(10, 25), colors[Math.floor(random(0, colors.length))], velocity));
+                }
+
+                // Ensure animation loop is running
+                if (!animationFrameId) {
+                    animate();
+                }
+
+                // Fade out the canvas after a duration if no other animations are active
+                setTimeout(() => {
+                    if (fireworks.length === 0 && hearts.length === 0 && confetti.length === 0 && activeHearts.length === 0 && activeConfetti.length === 0) {
+                        canvas.classList.add('hidden');
+                        setTimeout(() => {
+                            canvas.style.display = 'none';
+                            cancelAnimationFrame(animationFrameId);
+                            animationFrameId = null; // Reset animation frame ID
+                        }, 1000); // Matches CSS transition duration
+                    }
+                }, 3000); // Animation duration for the new particles
+            }
 
         })();
     </script>
