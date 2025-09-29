@@ -1,0 +1,2823 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relove</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&family=Dancing+Script:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        :root {
+            --pink-light: #F8E8EE; /* Softer pink */
+            --pink-medium: #F2D1D1; /* Warmer pink */
+            --pink-dark: #E0A8A8; /* Deeper pink, still soft */
+            --peach-light: #FFF0F5; /* More pinkish peach */
+            --peach-medium: #FCE4EC; /* Brighter, romantic peach */
+            --peach-dark: #F7CAC9; /* Richer peach */
+            --shadow-light: rgba(224, 168, 168, 0.4); /* Softer, themed shadow */
+            --text-dark: #4A4A4A; /* Softer dark grey */
+            --text-accent: #8B0000; /* Romantic maroon */
+            --error-red: #cc0000;
+            --success-green: #28a745;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Baloo 2', cursive;
+            background-color: var(--peach-light);
+            color: var(--text-dark);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            scroll-behavior: smooth;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        header {
+            background-color: var(--peach-medium);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--pink-dark); /* Changed border color */
+            font-weight: bold;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px var(--shadow-light);
+        }
+
+        .logo {
+            font-family: 'Pacifico', cursive;
+            font-size: 1.5rem;
+            color: var(--text-accent); /* Changed logo color */
+            user-select: none;
+            padding: 0.2rem 0;
+        }
+
+        nav {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-dark);
+            transition: color 0.3s ease;
+            padding: 0.5rem 0;
+            outline: none;
+        }
+
+        nav a:hover {
+            color: var(--text-accent); /* Changed hover color */
+            cursor: pointer;
+        }
+
+        /* Keyboard focus indicator */
+        nav a:focus,
+        .hamburger:focus,
+        .mobile-nav a:focus,
+        .message-box-form input[type="text"]:focus,
+        .message-box-form textarea:focus,
+        .message-box-form button:focus,
+        .cake-animation-button:focus,
+        .gallery-item:focus,
+        .praycard:focus {
+            outline: 3px solid var(--text-accent); /* Stronger, themed outline */
+            outline-offset: 2px;
+            box-shadow: 0 0 0 5px var(--pink-dark); /* Additional glow for emphasis */
+        }
+
+        /* Hamburger for mobile */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 28px;
+            height: 24px;
+            cursor: pointer;
+            padding: 4px;
+            outline: none;
+        }
+
+        .hamburger div {
+            width: 100%;
+            height: 3px;
+            background: var(--pink-dark);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* Mobile nav */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 60px;
+            right: 0;
+            width: 75%;
+            max-width: 280px;
+            background-color: var(--peach-medium);
+            box-shadow: -4px 44px 10px var(--shadow-light);
+            padding: 1.5rem;
+            animation: slideIn 0.3s ease-out forwards;
+            z-index: 999;
+            border-radius: 8px 0 0 8px;
+        }
+
+        .mobile-nav a {
+            display: block;
+            margin-bottom: 1.2rem;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            transition: color 0.2s ease;
+            padding: 0.5rem 0;
+            outline: none;
+        }
+
+        .mobile-nav a:hover {
+            color: var(--text-accent); /* Changed hover color */
+        }
+
+        @keyframes slideIn {
+            from {
+                right: -300px;
+                opacity: 0;
+            }
+            to {
+                right: 0;
+                opacity: 1;
+            }
+        }
+
+        /* Page container */
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 4rem auto;
+            padding: 0 1.2rem;
+        }
+
+        /* Title for sections */
+        h2.section-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            color: var(--text-accent); /* Changed title color */
+            text-align: center;
+            margin: 3rem 0 1.5rem 0;
+            user-select: none;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        h2.section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--pink-dark); /* Changed underline color */
+            border-radius: 2px;
+        }
+
+        /* --- Music & Cake Section --- */
+        .music-cake-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+            padding: 1rem;
+        }
+
+        .cake-container {
+            background: var(--peach-medium); /* Changed background to match theme */
+            width: 300px;
+            min-height: 300px;
+            border-radius: 18px;
+            box-shadow: 6px 6px 15px rgba(139, 0, 0, 0.4); /* Romantic maroon shadow */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            padding: 1rem;
+            position: relative;
+        }
+
+        .music-player-container {
+            background: var(--pink-light); /* Changed background */
+            width: 300px;
+            border-radius: 18px;
+            padding: 1.5rem;
+            box-shadow: 6px 6px 15px rgba(139, 0, 0, 0.4); /* Romantic maroon shadow */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .music-player-container h3 {
+            font-family: 'Dancing Script', cursive;
+            color: var(--text-accent); /* Changed heading color */
+            margin-bottom: 1.2rem;
+            user-select: none;
+            font-size: 1.8rem;
+        }
+
+        .music-player-container audio {
+            width: 100%;
+            outline: none;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px var(--pink-dark); /* Changed shadow color */
+        }
+
+        .music-player-container figure {
+            margin-top:1.5rem;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 6px 16px var(--pink-dark); /* Changed shadow color */
+            width: 100%;
+        }
+
+        .music-player-container figure img {
+            width: 100%;
+            display: block;
+            height: auto;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .music-player-container figure img:hover {
+            transform: scale(1.05); /* Slightly larger hover effect */
+        }
+
+        /* --- Galeri Foto Section --- */
+        .gallery-section {
+            background: var(--peach-medium); /* Changed background */
+            border-radius: 18px;
+            padding: 1.5rem;
+            user-select: none;
+            box-shadow: 4px 4px 12px var(--shadow-light);
+            margin-bottom: 4rem;
+        }
+
+        .gallery-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            color: var(--text-accent); /* Changed title color */
+            text-align: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .gallery-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--pink-dark); /* Changed underline color */
+            border-radius: 2px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .gallery-item {
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px var(--pink-dark); /* Changed shadow color */
+            background: #fff;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 10px 20px var(--text-accent); /* Changed hover shadow color */
+            z-index: 2;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            display: block;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            pointer-events: none;
+            border-radius: 14px;
+        }
+
+        /* Placeholder for broken images */
+        .gallery-item img.broken-image {
+            background-color: #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 0.8em;
+            text-align: center;
+            height: 100%;
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: contain;
+        }
+        .gallery-item img.broken-image::before {
+            content: '🖼️ Gambar Rusak';
+            display: block;
+        }
+
+        /* --- Kartu Doa Section --- */
+        .praycards-section {
+            margin-bottom: 4rem;
+            padding: 1rem;
+        }
+
+        .praycards-container {
+            display: flex;
+            overflow-x: auto;
+            padding-bottom: 1.5rem;
+            gap: 1.2rem;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .praycards-container::-webkit-scrollbar {
+            height: 12px;
+        }
+
+        .praycards-container::-webkit-scrollbar-track {
+            background: var(--peach-light);
+            border-radius: 10px;
+        }
+
+        .praycards-container::-webkit-scrollbar-thumb {
+            background: var(--pink-dark); /* Changed scrollbar thumb color */
+            border-radius: 10px;
+            border: 3px solid var(--peach-light);
+        }
+
+        .praycard {
+            min-width: 160px;
+            max-width: 160px;
+            background: white;
+            border-radius: 16px;
+            padding: 1.2rem;
+            box-shadow: 2px 4px 12px var(--shadow-light);
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-accent); /* Changed text color */
+            cursor: default;
+            user-select: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            scroll-snap-align: start;
+            flex-shrink: 0;
+            outline: none;
+        }
+
+        .praycard:nth-child(odd) {
+            background: var(--pink-light); /* Changed background */
+        }
+
+        .praycard:nth-child(even) {
+            background: var(--peach-light); /* Changed background */
+        }
+
+        .praycard:hover {
+            transform: translateY(-8px);
+            box-shadow: 6px 10px 18px rgba(139, 0, 0, 0.4); /* Romantic maroon shadow */
+        }
+
+        /* --- Message Section --- */
+        .message-section {
+            background: var(--peach-medium); /* Changed background */
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 0 25px rgba(139, 0, 0, 0.3); /* Romantic maroon shadow */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .message-text {
+            font-size: 1.25rem;
+            color: var(--text-accent); /* Changed text color */
+            font-weight: 600;
+            font-family: 'Dancing Script', cursive;
+            user-select: none;
+            text-align: center;
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: opacity 0.5s ease-in-out, max-height 0.5s ease-in-out;
+        }
+
+        .message-text.show {
+            opacity: 1;
+            max-height: none;
+        }
+
+        .message-text h3 {
+            font-size: 2.2rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-accent); /* Changed heading color */
+        }
+
+        .message-text p {
+            font-size: 1.1rem;
+            font-family: 'Baloo 2', cursive;
+            color: var(--text-dark);
+            line-height: 1.5;
+        }
+
+        .message-images {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            user-select: none;
+            align-items: center;
+        }
+
+        .message-images img {
+            width: 160px;
+            height: 160px;
+            border-radius: 16px;
+            box-shadow: 3px 5px 10px var(--shadow-light);
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .message-images img:hover {
+            transform: scale(1.05);
+        }
+
+        .toggle-message-btn {
+            background-color: var(--text-accent); /* Changed button color */
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            outline: none;
+            margin-top: 1rem;
+        }
+
+        .toggle-message-btn:hover {
+            background-color: var(--pink-dark); /* Changed hover color */
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            header nav {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            main {
+                margin: 1rem auto 2rem auto;
+                padding: 0 0.8rem;
+            }
+
+            h2.section-title {
+                font-size: 2rem;
+                margin: 2.5rem 0 1.2rem 0;
+            }
+
+            .music-cake-section {
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
+                margin-bottom: 3rem;
+            }
+
+            .cake-container,
+            .music-player-container {
+                width: 90%;
+                max-width: 320px;
+            }
+
+            .praycards-section {
+                margin-bottom: 3rem;
+            }
+
+            .praycards-container {
+                padding-bottom: 1rem;
+                gap: 1rem;
+            }
+
+            .praycard {
+                min-width: 150px;
+                max-width: 150px;
+                padding: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .message-section {
+                flex-direction: column;
+                gap: 1.5rem;
+                max-width: 95vw;
+                padding: 1.5rem;
+                margin: 2rem auto;
+            }
+
+            .message-text {
+                font-size: 1.1rem;
+                text-align: center;
+            }
+
+            .message-text h3 {
+                font-size: 1.8rem;
+            }
+
+            .message-text p {
+                font-size: 1rem;
+            }
+
+            .message-images {
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 0.8rem;
+            }
+
+            .message-images img {
+                width: 100px;
+                height: 100px;
+                border-radius: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 0.6rem 0.8rem;
+            }
+
+            .logo {
+                font-size: 1.4rem;
+            }
+
+            .hamburger {
+                width: 26px;
+                height: 22px;
+            }
+
+            .mobile-nav {
+                top: 52px;
+                width: 80%;
+                max-width: 250px;
+                padding: 1.2rem;
+            }
+
+            .mobile-nav a {
+                font-size: 1.1rem;
+                margin-bottom: 1rem;
+            }
+
+            main {
+                padding: 0 0.5rem;
+            }
+
+            h2.section-title {
+                font-size: 1.8rem;
+                margin: 2rem 0 1rem 0;
+            }
+
+            .cake-container,
+            .music-player-container {
+                width: 95%;
+                max-width: 280px;
+                padding: 1rem;
+            }
+
+            .music-player-container h3 {
+                font-size: 1.6rem;
+                margin-bottom: 1rem;
+            }
+
+            .praycard {
+                min-width: 140px;
+                max-width: 140px;
+                padding: 0.8rem;
+                font-size: 0.85rem;
+            }
+
+            .message-section {
+                padding: 1rem;
+                gap: 1rem;
+            }
+
+            .message-images img {
+                width: 80px;
+                height: 80px;
+            }
+
+            /* Responsive adjustment for gallery grid on small screens */
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                gap: 0.8rem;
+            }
+        }
+
+        /* Styles for the new cake */
+        .cake-container .velas {
+            background: #ffffff;
+            border-radius: 10px;
+            position: absolute;
+            left: 50%;
+            width: 5px;
+            height: 35px;
+            z-index: 10;
+            opacity: 0;
+            transform: translate(-50%, -50%);
+        }
+        .cake-container .velas:after,
+        .cake-container .velas:before {
+            background: rgba(255, 0, 0, 0.4);
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 2.22222222px;
+        }
+        .cake-container .velas:after {
+            top: 25%;
+            left: 0;
+        }
+        .cake-container .velas:before {
+            top: 45%;
+            left: 0;
+            overflow: hidden;
+        }
+
+        .cake-container .fuego {
+            border-radius: 100%;
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            margin-left: -2.6px;
+            width: 6.66666667px;
+            height: 18px;
+            opacity: 0;
+        }
+        .cake-container .fuego.animate-fuego:nth-child(1) {
+            animation: fuego 2s infinite, showFuego 0.5s ease-out forwards;
+        }
+        .cake-container .fuego.animate-fuego:nth-child(2) {
+            animation: fuego 1.5s infinite, showFuego 0.5s ease-out forwards;
+        }
+        .cake-container .fuego.animate-fuego:nth-child(3) {
+            animation: fuego 1s infinite, showFuego 0.5s ease-out forwards;
+        }
+        .cake-container .fuego.animate-fuego:nth-child(4) {
+            animation: fuego 0.5s infinite, showFuego 0.5s ease-out forwards;
+        }
+        .cake-container .fuego.animate-fuego:nth-child(5) {
+            animation: fuego 0.2s infinite, showFuego 0.5s ease-out forwards;
+        }
+
+        @keyframes fuego {
+            0%,
+            100% {
+                background: rgba(254, 248, 97, 0.5);
+                box-shadow: 0 0 40px 10px rgba(248, 233, 209, 0.2);
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                background: rgba(255, 50, 0, 0.1);
+                box-shadow: 0 0 40px 20px rgba(248, 233, 209, 0.2);
+                transform: translateY(-20px) scale(0);
+            }
+        }
+
+        @keyframes in {
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes adjust-velas-position {
+            to {
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        @keyframes showVelas {
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        @keyframes showFuego {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* New styles for smoke effect */
+        .cake-container .smoke {
+            position: absolute;
+            top: -20px; /* Same position as .fuego */
+            left: 50%;
+            margin-left: -10px; /* Adjust to center the smoke */
+            width: 20px;
+            height: 20px;
+            background: rgba(150, 150, 150, 0.5); /* Greyish smoke color */
+            border-radius: 50%;
+            opacity: 0;
+            transform: translate(-50%, 0);
+            pointer-events: none; /* Ensure it doesn't interfere with clicks */
+        }
+
+        .cake-container .smoke.show-smoke {
+            animation: smoke-puff 2.5s ease-out forwards; /* Animation duration */
+        }
+
+        @keyframes smoke-puff {
+            0% {
+                transform: translate(-50%, 0) scale(0.5);
+                opacity: 0.5;
+            }
+            25% {
+                transform: translate(-50%, -10px) scale(0.8);
+                opacity: 0.7;
+            }
+            50% {
+                transform: translate(-50%, -20px) scale(1);
+                opacity: 0.5;
+            }
+            75% {
+                transform: translate(-55%, -30px) scale(1.2); /* Slight left wobble */
+                opacity: 0.2;
+            }
+            100% {
+                transform: translate(-45%, -40px) scale(1.5); /* Slight right wobble and fade out */
+                opacity: 0;
+            }
+        }
+
+
+        .cake-container #cake-svg {
+            display: block;
+            position: relative;
+            margin: 0 auto;
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .cake-container .cake-text {
+            color: var(--text-accent); /* Adjusted color to theme */
+            font-family: 'Dancing Script', cursive;
+            font-weight: 700;
+            font-style: normal;
+            text-align: center;
+            margin-top: 1rem;
+            user-select: none;
+        }
+        .cake-container .cake-text h1 {
+            font-size: 1.8em;
+            margin-bottom: 0.5rem;
+        }
+        .cake-container .cake-text p {
+            font-size: 1.2em;
+            font-family: 'Baloo 2', cursive;
+            color: var(--text-dark);
+        }
+
+        /* Hide the old cake's blow button and related elements */
+        .blow-button-container {
+            display: none;
+        }
+        .cake-3d {
+            display: none;
+        }
+
+        /* New styles for Message Box */
+        .message-box-container {
+            background: var(--peach-medium); /* Changed background */
+            border-radius: 18px;
+            padding: 2rem;
+            box-shadow: 4px 4px 12px var(--shadow-light);
+            margin-bottom: 4rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            opacity: 0;
+            transition: opacity 1s ease-in;
+        }
+
+        .message-box-container h2 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+
+        .message-box-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .message-box-form label {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.2rem;
+        }
+
+        .message-box-form input[type="text"],
+        .message-box-form textarea {
+            padding: 0.8rem;
+            border: 1px solid var(--pink-dark); /* Changed border color */
+            border-radius: 8px;
+            font-family: 'Baloo 2', cursive;
+            font-size: 1rem;
+            color: var(--text-dark);
+            background-color: var(--peach-light); /* Changed background */
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            outline: none;
+        }
+
+        .message-box-form input[type="text"]:focus,
+        .message-box-form textarea:focus {
+            outline: none;
+            border-color: var(--text-accent); /* Changed focus border color */
+            box-shadow: 0 0 0 3px var(--pink-dark), 0 0 8px var(--text-accent); /* Changed glow colors */
+        }
+
+        .message-box-form textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .message-box-form button {
+            background-color: var(--text-accent); /* Changed button color */
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            outline: none;
+        }
+
+        .message-box-form button:hover {
+            background-color: var(--pink-dark); /* Changed hover color */
+            transform: translateY(-2px);
+        }
+
+        .message-box-form button:disabled {
+            background-color: var(--pink-medium);
+            cursor: not-allowed;
+            opacity: 0.7;
+            transform: none;
+        }
+
+        #messageStatus {
+            text-align: center;
+            margin-top: 1rem;
+            font-weight: bold;
+            color: var(--text-accent); /* Changed status color */
+        }
+
+        /* Validation error message style */
+        .error-message {
+            color: var(--error-red);
+            font-size: 0.85em;
+            margin-top: 0.25rem;
+            text-align: left;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .message-box-container {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .message-box-container {
+                padding: 1rem;
+            }
+            .message-box-form input[type="text"],
+            .message-box-form textarea {
+                padding: 0.6rem;
+                font-size: 0.95rem;
+            }
+            .message-box-form button {
+                padding: 0.7rem 1.2rem;
+                font-size: 1rem;
+            }
+        }
+
+        /* Style for the new button */
+        .cake-animation-button {
+            background-color: var(--text-accent); /* Changed button color */
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin-top: 0.5rem;
+            outline: none;
+        }
+
+        .cake-animation-button:hover {
+            background-color: var(--pink-dark); /* Changed hover color */
+            transform: translateY(-2px);
+        }
+
+        /* Custom Music Player Styles */
+        .custom-audio-player {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 100%;
+        }
+
+        .player-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .play-pause-btn {
+            background-color: var(--text-accent); /* Changed button color */
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            flex-shrink: 0;
+            outline: none;
+        }
+
+        .play-pause-btn:hover {
+            background-color: var(--pink-dark); /* Changed hover color */
+            transform: scale(1.05);
+        }
+
+        .progress-container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--pink-dark); /* Changed progress bar color */
+            border-radius: 5px;
+            cursor: pointer;
+            -webkit-appearance: none;
+            appearance: none;
+            outline: none;
+        }
+
+        .progress-bar::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            background: var(--text-accent); /* Changed thumb color */
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .progress-bar::-moz-range-thumb {
+            width: 16px;
+            height: 16px;
+            background: var(--text-accent); /* Changed thumb color */
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .progress-bar:hover::-webkit-slider-thumb,
+        .progress-bar:hover::-moz-range-thumb {
+            background: var(--pink-dark); /* Changed hover thumb color */
+        }
+
+        .time-display {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--text-dark);
+        }
+
+        /* New style for #lyrics-box */
+        #lyrics-box {
+            margin-top: 1.5rem;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 1rem;
+            background: var(--peach-light); /* Changed background */
+            border-radius: 12px;
+            box-shadow: 0 2px 8px var(--shadow-light);
+            font-family: 'Baloo 2', cursive;
+            color: var(--text-accent); /* Changed text color */
+            font-weight: bold;
+            font-size: 1em;
+            overflow: hidden;
+        }
+
+        /* Styles for the overlay canvas */
+        #animationCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            pointer-events: none;
+            opacity: 1;
+            transition: opacity 1s ease-out;
+        }
+
+        #animationCanvas.hidden {
+            opacity: 0;
+        }
+
+        /* Overlay for the intro animation */
+        #introOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--peach-light); /* Match body background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 1s ease-out;
+            flex-direction: column; /* Added for vertical alignment of envelope and text */
+        }
+
+        #introOverlay.fade-out {
+            opacity: 0;
+            pointer-events: none; /* Disable interactions after fade-out */
+        }
+
+        /* Envelope styles */
+        .envelope-container {
+            position: relative;
+            width: 250px;
+            height: 150px;
+            cursor: pointer;
+            perspective: 1000px;
+            transition: transform 0.5s ease-in-out;
+            margin-bottom: 20px; /* Space between envelope and text */
+        }
+
+        .envelope-container.open {
+            transform: translateY(-50px); /* Lift up when opened */
+        }
+
+        .envelope {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: var(--pink-medium);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .envelope-front {
+            z-index: 2;
+        }
+
+        .envelope-back {
+            z-index: 1;
+        }
+
+        .envelope-flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background-color: var(--pink-dark);
+            border-radius: 0 0 10px 10px;
+            transform-origin: top;
+            transition: transform 0.5s ease-in-out;
+            z-index: 3;
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+        }
+
+        .envelope-container.open .envelope-flap {
+            transform: rotateX(180deg);
+            z-index: 0; /* Send flap behind when open */
+        }
+
+        .envelope-paper {
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            width: 80%;
+            height: 80%;
+            background-color: var(--pink-medium);
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: var(--text-accent);
+            text-align: center;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        /* New styles for the animated "Klik Here" text */
+        .animated-click-btn {
+            background-color: var(--text-accent);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            padding: 0.6rem 1.2rem; /* Reduced padding */
+            font-weight: 700;
+            font-size: 1rem; /* Reduced font size */
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.7s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+            position: absolute; /* Position relative to introOverlay */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, 60px); /* Initial position: 60px down from center */
+            opacity: 0; /* Initially hidden */
+            pointer-events: none; /* Disable clicks until visible */
+            z-index: 5; /* Higher than .envelope-front (z-index: 2) and .envelope-flap (z-index: 3) */
+            font-family: 'Dancing Script', cursive; /* Apply font */
+        }
+
+        .animated-click-btn.show {
+            opacity: 1;
+            transform: translate(-50%, -80px); /* Adjusted animation target to be higher, relative to envelope */
+            pointer-events: auto; /* Enable clicks */
+        }
+
+        .animated-click-btn:hover {
+            background-color: var(--pink-dark);
+            transform: translate(-50%, -80px) scale(1.05); /* Adjusted hover target */
+        }
+
+        /* Responsive adjustments for envelope */
+        @media (max-width: 768px) {
+            .envelope-container {
+                width: 200px;
+                height: 120px;
+            }
+            .envelope-paper {
+                font-size: 2rem;
+            }
+            .animated-click-btn {
+                font-size: 0.9rem; /* Further reduced for smaller screens */
+                padding: 0.5rem 1rem; /* Further reduced padding */
+                transform: translate(-50%, -70px); /* Adjusted animation target */
+            }
+            .animated-click-btn:hover {
+                transform: translate(-50%, -70px) scale(1.05);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .envelope-container {
+                width: 180px;
+                height: 100px;
+            }
+            .envelope-paper {
+                font-size: 1.8rem;
+            }
+            .animated-click-btn {
+                font-size: 0.8rem; /* Even smaller for very small screens */
+                padding: 0.4rem 0.8rem; /* Even smaller padding */
+                transform: translate(-50%, -60px); /* Adjusted animation target */
+            }
+            .animated-click-btn:hover {
+                transform: translate(-50%, -60px) scale(1.05);
+            }
+        }
+
+        /* New styles for the love slider */
+        .love-slider-container {
+            width: 80%;
+            margin: 1.5rem auto 0.5rem auto;
+            text-align: center;
+        }
+
+        .love-slider-container p {
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .love-slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(to right, var(--pink-light), var(--pink-dark));
+            border-radius: 5px;
+            outline: none;
+            transition: background 0.3s ease; /* Smooth transition for background */
+            cursor: pointer;
+        }
+
+        .love-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 30px;
+            height: 30px;
+            background: var(--text-accent);
+            border-radius: 50%;
+            cursor: grab;
+            position: relative;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: background-color 0.3s ease, transform 0.1s ease;
+        }
+
+        .love-slider::-webkit-slider-thumb:active {
+            cursor: grabbing;
+            transform: scale(1.1);
+        }
+
+        .love-slider::-webkit-slider-thumb::before {
+            content: '❤️'; /* Heart emoji */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.2em; /* Adjust size as needed */
+            color: white; /* Color of the heart */
+            line-height: 1; /* Ensure vertical alignment */
+        }
+
+        .love-slider::-moz-range-thumb {
+            width: 30px;
+            height: 30px;
+            background: var(--text-accent);
+            border-radius: 50%;
+            cursor: grab;
+            position: relative;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: background-color 0.3s ease, transform 0.1s ease;
+        }
+
+        .love-slider::-moz-range-thumb:active {
+            cursor: grabbing;
+            transform: scale(1.1);
+        }
+
+        /* For Firefox, you might need to use pseudo-elements for the emoji, but it's less straightforward */
+        /* .love-slider::-moz-range-thumb::before { content: '❤️'; } */
+
+        .love-percentage-display {
+            font-weight: bold;
+            color: var(--text-accent);
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+            display: block;
+        }
+
+        /* Adjustments for smaller screens for the slider */
+        @media (max-width: 480px) {
+            .love-slider-container {
+                width: 90%;
+            }
+            .love-slider::-webkit-slider-thumb,
+            .love-slider::-moz-range-thumb {
+                width: 25px;
+                height: 25px;
+            }
+            .love-slider::-webkit-slider-thumb::before {
+                font-size: 1em;
+            }
+            .love-percentage-display {
+                font-size: 1rem;
+            }
+        }
+
+        /* NEW: Hero Banner Styles */
+        #hero-banner {
+            background: linear-gradient(135deg, var(--peach-light) 0%, var(--pink-medium) 100%);
+            padding: 4rem 1.5rem; /* Increased padding for more white space */
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            margin: 2rem auto; /* Add margin for spacing */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        #hero-banner h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.5rem; /* Large font size */
+            color: var(--text-accent);
+            text-shadow: 0 0 10px rgba(255, 105, 180, 0.7), 0 0 20px rgba(255, 105, 180, 0.5); /* Romantic glow */
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        #hero-banner .decoration {
+            position: absolute;
+            opacity: 0.6;
+            z-index: 1;
+        }
+
+        #hero-banner .balloon {
+            width: 80px;
+            height: 100px;
+            background-color: var(--pink-dark);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            transform: rotate(-15deg);
+        }
+        #hero-banner .balloon::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 30px;
+            background-color: rgba(0,0,0,0.3);
+        }
+        #hero-banner .balloon-1 { top: 10%; left: 5%; transform: rotate(10deg); background-color: var(--pink-light); }
+        #hero-banner .balloon-2 { top: 5%; right: 10%; transform: rotate(-20deg); background-color: var(--peach-dark); }
+        #hero-banner .balloon-3 { bottom: 15%; left: 20%; transform: rotate(5deg); background-color: var(--pink-medium); }
+
+        #hero-banner .confetti-piece {
+            width: 10px;
+            height: 10px;
+            background-color: rgba(255,255,255,0.8);
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        #hero-banner .confetti-1 { top: 20%; left: 30%; transform: rotate(45deg); background-color: var(--text-accent); }
+        #hero-banner .confetti-2 { top: 40%; right: 25%; transform: rotate(15deg); background-color: var(--pink-dark); }
+        #hero-banner .confetti-3 { bottom: 30%; left: 40%; transform: rotate(60deg); background-color: var(--peach-medium); }
+        #hero-banner .confetti-4 { top: 15%; right: 5%; transform: rotate(30deg); background-color: var(--pink-light); }
+
+        #hero-banner .cake-illustration {
+            width: 150px;
+            height: 150px;
+            position: absolute;
+            bottom: -50px; /* Partially off-screen */
+            right: 5%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect x="10" y="60" width="80" height="30" fill="%23F7CAC9"/><rect x="20" y="40" width="60" height="20" fill="%23F2D1D1"/><rect x="30" y="20" width="40" height="20" fill="%23F8E8EE"/><circle cx="50" cy="18" r="5" fill="%238B0000"/><path d="M48 10c0-2 4-2 4 0s-4 2-4 0z" fill="%23FFD700"/><path d="M10 60c0-10 80-10 80 0z" fill="%23E0A8A8" opacity="0.5"/><path d="M20 40c0-8 60-8 60 0z" fill="%23E0A8A8" opacity="0.5"/><path d="M30 20c0-6 40-6 40 0z" fill="%23E0A8A8" opacity="0.5"/></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            z-index: 2;
+        }
+
+        /* NEW: Mobile Spacing Adjustments */
+        @media (max-width: 768px) {
+            /* General section padding */
+            .message-section,
+            .music-cake-section,
+            .gallery-section,
+            .praycards-section,
+            .message-box-container {
+                padding-top: 3rem; /* More top padding */
+                padding-bottom: 3rem; /* More bottom padding */
+                margin-bottom: 2.5rem; /* Increased margin between sections */
+            }
+
+            /* Adjust gaps for flex/grid containers */
+            .music-cake-section {
+                gap: 2.5rem; /* Slightly more gap */
+            }
+            .praycards-container {
+                gap: 1.5rem; /* More gap for cards */
+            }
+            .message-images {
+                gap: 1.2rem; /* More gap for images */
+            }
+            .message-box-form {
+                gap: 1.2rem; /* More gap for form elements */
+            }
+
+            /* Ensure buttons remain touch-friendly */
+            .toggle-message-btn,
+            .cake-animation-button,
+            .message-box-form button {
+                padding: 0.9rem 1.8rem; /* Slightly larger padding */
+                font-size: 1.1rem; /* Maintain readability */
+            }
+
+            /* Hero banner adjustments */
+            #hero-banner {
+                padding: 3rem 1rem;
+            }
+            #hero-banner h1 {
+                font-size: 3.5rem;
+            }
+            #hero-banner .balloon {
+                width: 60px;
+                height: 75px;
+            }
+            #hero-banner .cake-illustration {
+                width: 100px;
+                height: 100px;
+                bottom: -30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            /* General section padding */
+            .message-section,
+            .music-cake-section,
+            .gallery-section,
+            .praycards-section,
+            .message-box-container {
+                padding-top: 2.5rem; /* Even more top padding */
+                padding-bottom: 2.5rem; /* Even more bottom padding */
+                margin-bottom: 2rem; /* Increased margin between sections */
+            }
+
+            /* Adjust gaps for flex/grid containers */
+            .music-cake-section {
+                gap: 2rem;
+            }
+            .praycards-container {
+                gap: 1rem;
+            }
+            .message-images {
+                gap: 1rem;
+            }
+            .message-box-form {
+                gap: 1rem;
+            }
+
+            /* Ensure buttons remain touch-friendly */
+            .toggle-message-btn,
+            .cake-animation-button,
+            .message-box-form button {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            /* Hero banner adjustments */
+            #hero-banner {
+                padding: 2.5rem 0.8rem;
+            }
+            #hero-banner h1 {
+                font-size: 2.8rem;
+            }
+            #hero-banner .balloon {
+                width: 50px;
+                height: 60px;
+            }
+            #hero-banner .cake-illustration {
+                width: 80px;
+                height: 80px;
+                bottom: -20px;
+            }
+        }
+
+        /* Animation for love slider thumb */
+        @keyframes heartBeat {
+            0% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.2); }
+            100% { transform: translate(-50%, -50%) scale(1); }
+        }
+
+        .love-slider.active-thumb::-webkit-slider-thumb {
+            animation: heartBeat 0.3s ease-out;
+        }
+        .love-slider.active-thumb::-moz-range-thumb {
+            animation: heartBeat 0.3s ease-out;
+        }
+/* Preloader Styles */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--peach-light); /* warna lembut dari tema */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+}
+
+.loader-heart {
+    font-size: 3rem;
+    animation: heartbeat 1s infinite;
+    color: var(--text-accent); /* maroon romantis */
+}
+
+#preloader p {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    font-family: 'Dancing Script', cursive;
+    color: var(--text-accent);
+}
+
+/* Animasi detak jantung */
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+}
+
+/* Efek fade out */
+#preloader.fade-out {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+    </style>
+</head>
+
+<body>
+    <!-- Preloader -->
+<div id="preloader">
+  <div class="loader-heart">❤️</div>
+  <p>Loading...</p>
+</div>
+    <!-- Intro Overlay -->
+    <div id="introOverlay">
+        <div class="envelope-container" id="envelopeContainer">
+            <div class="envelope envelope-back"></div>
+            <div class="envelope-flap"></div>
+            <div class="envelope-paper" id="envelopePaper">
+                <!-- The paper inside the envelope, now empty of "Klik Here" text -->
+            </div>
+        </div>
+        <!-- Moved "Klik Here" text outside the envelope container again, relative to introOverlay -->
+        <button class="animated-click-btn" id="animatedClickHere">Klik lagi sayang</button>
+    </div>
+
+    <!-- Canvas for animations -->
+    <canvas id="animationCanvas"></canvas>
+
+    <header>
+        <nav role="navigation" aria-label="Primary menu">
+            <a href="#musik" tabindex="0">Musik</a>
+            <a href="#kartu-doa" tabindex="0">Kartu Doa</a>
+            <a href="#galeri" tabindex="0">Galeri Foto</a>
+            <a href="#pesan" tabindex="0">Kotak Pesan</a>
+        </nav>
+        <div class="hamburger" role="button" aria-label="Toggle menu" aria-expanded="false" tabindex="0" id="hamburgerBtn" aria-controls="mobileMenu">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+    <nav class="mobile-nav" id="mobileMenu" aria-hidden="true">
+        <a href="#musik" tabindex="-1">Musik</a>
+        <a href="#kartu-doa" tabindex="-1">Kartu Doa</a>
+        <a href="#galeri" tabindex="-1">Galeri Foto</a>
+        <a href="#pesan" tabindex="-1">Kotak Pesan</a>
+    </nav>
+
+    <main>
+        <section id="hero-banner" aria-label="Selamat Ulang Tahun">
+            <div class="decoration balloon balloon-1"></div>
+            <div class="decoration balloon balloon-2"></div>
+            <div class="decoration balloon balloon-3"></div>
+            <div class="decoration confetti-piece confetti-1"></div>
+            <div class="decoration confetti-piece confetti-2"></div>
+            <div class="decoration confetti-piece confetti-3"></div>
+            <div class="decoration confetti-piece confetti-4"></div>
+            <div class="decoration cake-illustration"></div>
+            <h1>Happy Birthday ❤️</h1>
+        </section>
+        <!-- Birthday Message -->
+        <section class="message-section" aria-label="Ucapan ulang tahun sayang">
+            <h2 class="section-title">Ucapan Ulang Tahun</h2>
+            <button id="toggleMessageBtn" class="toggle-message-btn">Lihat Ucapan <i class="fas fa-gift"></i></button>
+            <div id="birthdayMessageContent" class="message-text" aria-hidden="true">
+                <h3>Happy Birthday Kakak</h3>
+                <p>"Selamat ulang tahun, kakak ana. Semoga hari ini seindah senyum kak ana dan hari yang paling bahagia dan terbaik buat kak ana, menjadi hari yang penuh kebahagiaan, penuh doa-doa baik, dan membawa banyak hal terbaik dalam hidupmu. Semoga apa pun yang kak ana impikan bisa tercapai satu per satu, dan semoga kak ana selalu diberi kesehatan, panjang umur, serta dilindungi oleh Allah di setiap langkah. maafin aku yg selama ini banyak salah dan selalu ngecewain kak ana."</p>
+                <p>"makasih buat semua waktunya🤍"</p>
+            </div>
+            <div class="message-images" aria-hidden="true">
+                <!-- Updated alt text for clarity -->
+                <img src="Screenshot_2025-07-17-14-37-18-11_99c04817c0de5652397fc8b56c3b3817.jpg" alt="Ilustrasi kartun pasangan sedang berpelukan dengan latar belakang hati." loading="lazy"/>
+                <img src="Screenshot_2025-07-17-14-37-22-88_99c04817c0de5652397fc8b56c3b3817.jpg" alt="Ilustrasi kartun pasangan sedang duduk bersama di bangku taman." loading="lazy"/>
+            </div>
+        </section>
+        <!-- Musik & Cake Section -->
+        <section id="musik" aria-label="Playlist musik dan kue ulang tahun" class="music-cake-section">
+            <h2 class="section-title">Musik & Kue Ulang Tahun</h2>
+            <div class="cake-container">
+                <!-- New Cake HTML Structure -->
+                <div class="velas">
+                    <div class="fuego"></div>
+                    <div class="fuego"></div>
+                    <div class="fuego"></div>
+                    <div class="fuego"></div>
+                    <div class="fuego"></div>
+                    <!-- Smoke element for each candle -->
+                    <div class="smoke"></div>
+                </div>
+
+                <svg id="cake-svg" version="1.1" x="0px" y="0px" width="300px" height="500px" viewBox="0 0 200 500"
+                    enable-background="new 0 0 200 500" xml:space="preserve" aria-hidden="true">
+                    <path fill="#a88679" d="M173.667-13.94c-49.298,0-102.782,0-147.334,0c-3.999,0-4-16.002,0-16.002
+                    c44.697,0,96.586,0,147.334,0C177.667-29.942,177.668-13.94,173.667-13.94z">
+                        <animate id="bizcocho_3" attributeName="d" calcMode="spline" keySplines="0 0 1 1; 0 0 1 1"
+                            begin="indefinite" dur="0.3s" fill="freeze" values="
+                                      M173.667-13.94c-49.298,0-102.782,0-147.334,0c-3.999,0-4-16.002,0-16.002
+                    c44.697,0,96.586,0,147.334,0C177.667-29.942,177.668-13.94,173.667-13.94z
+                                      ;
+                                      M173.667,411.567c-47.995,12.408-102.955,12.561-147.334,0
+                    c-3.848-1.089-0.189-16.089,3.661-15.002c44.836,12.66,90.519,12.753,139.427,0.07
+                    C173.293,395.631,177.541,410.566,173.667,411.567z
+                                      ;
+                                      M173.667,427.569c-49.795,0-101.101,0-147.334,0c-3.999,0-4-16.002,0-16.002
+                    c46.385,0,97.539,0,147.334,0C177.668,411.567,177.667,427.569,173.667,427.569z
+                                      " />
+                    </path>
+                    <path fill="#8b6a60" d="M100-178.521c1.858,0,3.364,1.506,3.364,3.363c0,0,0,33.17,0,44.227
+                    c0,19.144,0,57.431,0,76.574c0,10.152,0,40.607,0,40.607c0,1.858-1.506,3.364-3.364,3.364l0,0c-1.858,0-3.364-1.506-3.364-3.364c0,0,0-30.455,0-40.607c0-19.145,0-57.432,0-76.576c0-11.057,0-44.225,0-44.225C96.636-177.015,98.142-178.521,100-178.521
+                    L100,267.257z">
+                        <animate id="relleno_2" attributeName="d" calcMode="spline" keySplines="0 0 1 1; 0 0 1 1; 0 0 0.58 1"
+                            begin="indefinite" dur="0.5s" fill="freeze" values="
+                                      M100-178.521c1.858,0,3.364,1.506,3.364,3.363c0,0,0,33.17,0,44.227
+                    c0,19.144,0,57.431,0,76.574c0,10.152,0,40.607,0,40.607c0,1.858-1.506,3.364-3.364,3.364l0,0c-1.858,0-3.364-1.506-3.364-3.364c0,0,0-30.455,0-40.607c0-19.145,0-57.432,0-76.576c0-11.057,0-44.225,0-44.225C96.636,268.763,98.142,267.257,100,267.257
+                    L100,267.257z
+                                      ;
+                                      M100,267.257c1.858,0,3.364,1.506,3.364,3.363c0,0,0,33.17,0,44.227
+                    c0,19.143,0,57.43,0,76.574c0,10.151,0,40.606,0,40.606c0,1.858-1.506,3.364-3.364,3.364l0,0c-1.858,0-3.364-1.506-3.364-3.364
+                    c0,0,0-30.455,0-40.606c0-19.145,0-57.432,0-76.576c0-11.057,0-44.225,0-44.225C96.636,268.763,98.142,267.257,100,267.257
+                    L100,267.257z
+                                      ;
+                                      M93.928,405.433c-0.655,6.444-0.102,9.067,2.957,11.798c0,0,8.083,5.571,16.828,3.503
+                    c18.629-4.406,43.813,6.194,50.792,7.791c14.75,3.375,9.162,6.867,9.162,6.867c-2.412,2.258-58.328,0-73.667,0l0,0
+                    c-1.858,0-69.995,2.133-73.667,0c0,0-3.337-2.439,6.172-5.992c11.375-4.25,52.875,8.822,47.139-9.442
+                    c-6.333-20.167,5.226-21.514,5.226-21.514c3.435-0.915,12.78-6.663,10.923-0.546L93.928,405.433z
+                                      ;
+                                      M102.242,427.569c5.348,0,14.079,0,17.462,0c0,0,17.026,0,27.504,0
+                    c19.143,0,20.39-3.797,26.459,0c3,1.877,0,7.823,0,7.823c-2.412,2.258-58.328,0-73.667,0l0,0c-1.858,0-67.187,0-73.667,0
+                    c0,0-4.125-4.983,0-7.823c5.201-3.58,16.085,0,23.725,0c8.841,0,20.762,0,20.762,0c3.686,0,8.597,0,19.511,0H102.242z
+                                      " />
+                    </path>
+                    <path fill="#a88679" d="M173.667-15.929c-46.512,0-105.486,0-147.334,0c-3.999,0-4-16.002,0-16.002
+                    c43.566,0,97.96,0,147.334,0C177.667-31.931,177.666-15.929,173.667-15.929z">
+                        <animate id="bizcocho_2" attributeName="d" calcMode="spline" keySplines="0 0 1 1; 0 0 1 1; 0.25 0 0.58 1"
+                            begin="indefinite" dur="0.5s" fill="freeze" values="
+                                      M173.667-15.929c-46.512,0-105.486,0-147.334,0c-3.999,0-4-16.002,0-16.002
+                    c43.566,0,97.96,0,147.334,0C177.667-31.931,177.666-15.929,173.667-15.929z
+                                      ;
+                                      M173.434,445.393c-47.269,8.001-105.245,8.001-147.334,0c-3.929-0.747-0.692-16.543,3.243-15.824
+                    c43.828,8.001,92.165,8.001,140.739,0C174.029,428.918,177.377,444.726,173.434,445.393z
+                                      ;
+                                      M173.667,449.514c-47.576-5.454-102.799-5.744-147.333,0c-3.966,0.512-3.938-15.297,0-16.002
+                    c43.683-7.823,97.646-8.026,147.333,0C177.616,434.15,177.644,449.969,173.667,449.514z
+                                      ;
+                                      M173.667,451.394c-49.298,0-102.782,0-147.334,0c-3.999,0-4-16.002,0-16.002
+                    c44.697,0,96.586,0,147.334,0C177.667,435.392,177.668,451.394,173.667,451.394z
+                                      " />
+                    </path>
+                    <path fill="#8b6a60" d="M101.368-73.685c0,12.164,0,15.18,0,28.519c0,22.702,0-13.661,0,8.304c0,14.48,0,18.233,0,30.512
+                    c0,1.753-2.958,1.847-2.958,0c0-12.68,0-16.277,0-30.401c0-21.983,0,11.66,0-8.305c0-13.027,0-15.992,0-28.628
+                    C98.411-75.883,101.368-75.592,101.368-73.685z">
+                        <animate id="relleno_1" attributeName="d" calcMode="spline" keySplines="0 0 1 1; 0 0 1 1; 0 0 0.6 1"
+                            begin="indefinite" dur="0.5s" fill="freeze" values="
+                                      M101.368-73.685c0,12.164,0,15.18,0,28.519c0,22.702,0-13.661,0,8.304c0,14.48,0,18.233,0,30.512
+                    c0,1.753-2.958,1.847-2.958,0c0-12.68,0-16.277,0-30.401c0-21.983,0,11.66,0-8.305c0-13.027,0-15.992,0-28.628
+                    C98.411-75.883,101.368-75.592,101.368-73.685z
+                                      ;
+                                      M101.368,350.885c0,12.164,0,65.18,0,78.518c0,22.703,0-33.66,0-11.695c0,14.48,0,28.232,0,40.512
+                    c0,1.753-2.958,1.847-2.958,0c0-12.68,0-26.277,0-40.402c0-21.982,0,31.66,0,11.695c0-13.027,0-65.992,0-78.627
+                    C98.411,348.686,101.368,348.977,101.368,350.885z
+                                      ;
+                                      M128.38,447.567c37.626,6.312,39.303,13.658,26.833,12.833c-22.653-1.499-13.636-0.831-23.302-0.831
+                    c-14.48,0-17.884,0-30.163,0c-2.087,0-2.068,0-3.915,0c-13.333,0-8.963,0-23.088,0c-11.668,0-14.062,5.995-27.532,1.164
+                    c-12.629-4.529,38.667-3.167,46.833-17.333C100.077,432.94,105.546,443.736,128.38,447.567z
+                                      ;
+                                      M173.667,451.394c2.875,0,2.997,9.257,0,9.131c-22.662-0.956-32.09-0.956-41.756-0.956
+                    c-14.48,0-17.884,0-30.163,0c-2.087,0-2.068,0-3.915,0c-13.333,0-8.963,0-23.088,0c-11.668,0-34.99-0.294-48.412,1.831
+                    c-4.109,0.65-3.01-10.006,0-10.006C37.129,451.394,149.379,451.394,173.667,451.394z
+                                      " />
+                    </path>
+                            <path fill="#a88679" d="M173.667,21.571c-33.174,0-111.467,0-147.334,0c-4,0-4-16.002,0-16.002c39.836,0,105.982,0,147.334,0
+		C177.668,5.569,177.667,21.571,173.667,21.571z">
+            <animate id="bizcocho_1" attributeName="d" calcMode="spline"
+                keySplines="0 0 1 1; 0 0 1 1; 0 0 1 1; 0.25 0 1 1; 0 0 1 1; 0.25 0 0.6 1" begin="indefinite" dur="0.8s"
+                fill="freeze" values="
+                          M173.667,21.571c-33.174,0-111.467,0-147.334,0c-4,0-4-16.002,0-16.002c39.836,0,105.982,0,147.334,0
+		C177.668,5.569,177.667,21.571,173.667,21.571z
+                          ;
+                          M173.667,459.569c-33.197,16.002-110.782,16.002-147.334,0c-3.664-1.604,1.614-15.617,5.337-14.153
+		c40.702,16.002,94.289,16.104,136.505,0.103C171.917,444.1,177.271,457.832,173.667,459.569z
+                          ;
+                          M171.817,475.571c-39.361-3.001-105.438-2.571-143.556,0c-3.991,0.27-7.377-14.736-3.387-15.014
+		c41.553-2.888,104.421-3.121,150.51-0.233C179.378,460.574,175.806,475.875,171.817,475.571z
+                          ;
+                          M171.817,459.564c-38.8-12.188-104.504-13.762-143.556,0c-3.772,1.329-7.961-12.604-4.178-13.905
+		c40.864-14.064,105.114-15.52,151.918-0.973C179.822,445.874,175.634,460.762,171.817,459.564z
+                          ;
+                          M173.667,475.571c-46.376-5.005-105.924-4.003-147.334,0c-3.981,0.385-3.479-15.421,0.479-16.002
+		c43.087-6.327,97.705-7.083,146.855,0.438C177.621,460.613,177.644,476,173.667,475.571z
+                          ;
+                          M173.667,474.117c-46.376,1.866-105.638,2.01-147.334,0c-3.995-0.192-3.52-16.144,0.479-16.002
+		c43.794,1.55,96.341,1.541,145.723,0C176.532,457.99,177.663,473.956,173.667,474.117z
+                          ;
+                          M173.667,475.571c-46.512,0-105.486,0-147.334,0c-3.999,0-4-16.002,0-16.002c43.566,0,97.96,0,147.334,0
+		C177.667,459.569,177.666,475.571,173.667,475.571z
+                          " />
+        </path>
+                    <path fill="#fefae9" d="M104.812,113.216c0,3.119-2.164,5.67-4.812,5.67c-2.646,0-4.812-2.551-4.812-5.67c0-5.594,0-16.782,0-22.375
+	c0-5.143,0-15.427,0-20.568c0-7.333,0-21.998,0-29.33c0-5.523,0-16.569,0-22.092c0-3.295,0-9.885,0-13.181
+	C95.188,2.551,97.353,0,100,0c2.648,0,4.812,2.551,4.812,5.669c0,3.248,0,9.743,0,12.991c0,5.428,0,16.284,0,21.711
+	c0,7.618,0,22.854,0,30.472c0,4.952,0,14.854,0,19.807C104.812,96.292,104.812,107.576,104.812,113.216z">
+            <animate id="crema" attributeName="d" calcMode="spline"
+                keySplines="0 0 1 1; 0 0 1 1; 0 0 1 1; 0.25 0 1 1; 0 0 1 1; 0 0 0.58 1" begin="bizcocho_3.end" dur="2s"
+                fill="freeze" values="
+                          M104.812,113.216c0,3.119-2.164,5.67-4.812,5.67c-2.646,0-4.812-2.551-4.812-5.67c0-5.594,0-16.782,0-22.375
+	c0-5.143,0-15.427,0-20.568c0-7.333,0-21.998,0-29.33c0-5.523,0-16.569,0-22.092c0-3.295,0-9.885,0-13.181
+	C95.188,2.551,97.353,0,100,0c2.648,0,4.812,2.551,4.812,5.669c0,3.248,0,9.743,0,12.991c0,5.428,0,16.284,0,21.711
+	c0,7.618,0,22.854,0,30.472c0,4.952,0,14.854,0,19.807C104.812,96.292,104.812,107.576,104.812,113.216z
+                          ;
+                          M104.812,405.897c0,3.119-2.164,5.67-4.812,5.67c-2.646,0-4.812-2.551-4.812-5.67c0-5.594,0-16.782,0-22.376
+	c0-5.143,0-15.426,0-20.568c0-7.332,0-21.997,0-29.33c0-5.522,0-16.568,0-22.092c0-3.295,0-9.885,0-13.181
+	c0-3.118,2.165-5.669,4.812-5.669c2.648,0,4.812,2.551,4.812,5.669c0,3.247,0,9.743,0,12.991c0,5.428,0,16.283,0,21.711
+	c0,7.618,0,22.854,0,30.473c0,4.951,0,14.854,0,19.807C104.812,388.972,104.812,400.256,104.812,405.897z
+                          ;
+                          M111.873,411.567c-3.119,0-9.226,0-11.874,0c-2.646,0-7.748,0-10.867,0c-7.086,0-12.698,0-18.292,0
+	c-6.592,0-12.871,7.371-19.166,3.008c-10.043-6.961-7.776-10.169,2.991-17.745c12.61-8.873,27.713,1.994,25.919-7.531
+	c-2.589-13.742,11.008-14.513,11.365-17.789c0.441-4.051,4.235-11.107,8.051-8.175c3.113,2.393,1.007,8.008,0,13.159
+	c-1.871,9.569,8.058,2.113,9.494,14.155c2.592,21.732,21.184-0.675,29.309,7.976c5.216,5.553,18.413,5.552,15.426,12.942
+	c-3.131,7.745-15.825-4.369-23.8,2.903C126.261,418.271,118.301,411.567,111.873,411.567z
+                          ;
+                          M111.873,411.567c-3.119,0-9.226,0-11.874,0c-2.646,0-9.734,4.069-12.853,4.069
+	c-7.086,0-10.712-4.069-16.306-4.069c-6.592,0-12.12,6.013-19.166,3.008c-7.053-3.008-7.458,2.026-18.659,1.165
+	c-6.832-0.525-7.522-3.034-7.533-6.265c-0.037-10.336,22.073-2.452,36.613-2.628c10.234-0.124,19.856-1.439,37.905-2.102
+	c16.642-0.61,32.699,1.552,46.009,1.927c12.438,0.351,29.663-8.99,31.532,3.315c0.773,5.093-5.605,3.342-11.211,9.579
+	c-5.093,5.667-7.59-4.605-12.965-3.832c-8.269,1.189-14.962-8.537-22.937-1.265C126.261,418.271,118.301,411.567,111.873,411.567z
+                          ;
+                          M110.946,413.652c-2.904-1.137-8.405-2.748-12.446-0.97c-6.099,2.685-7.273,10.358-13.253,8.242
+	c-7.843-2.775-8.953-5.008-14.546-5.01c-24.653-0.011-4.849,26.507-18.264,26.507c-12.377,0,5.791-33.537-19.422-26.682
+	c-7.703,2.095-9.806-0.942-9.817-4.173c-0.037-10.336,24.357-4.544,38.897-4.72c10.234-0.124,19.856-1.439,37.905-2.102
+	c16.642-0.61,32.699,1.552,46.009,1.927c12.438,0.351,28.973-8.865,31.532,3.315c1.449,6.896,0.318,15.624-3.874,15.624
+	c-7.619,0-1.788-15.192-19.243-7.111c-7.581,3.51-15.963-9.738-26.669,1.066C120.644,426.744,118.381,416.561,110.946,413.652z
+                          ;
+                          M111.547,413.9c-2.969-0.956-8.775-0.949-13.167-0.5c-14.667,1.5-8.325,16.508-14.667,16.666
+	c-6.667,0.166-0.167-13.5-13.013-14.151c-30.471-1.545-5.572,46.651-18.987,46.651c-12.377,0,10.333-50.166-18.667-44.5
+	c-7.835,1.531-9.537-1.417-9.548-4.647c-0.037-10.336,23.675-5.177,38.215-5.353c10.234-0.124,20.618-1.671,38.667-2.333
+	c16.642-0.61,32.023,1.458,45.333,1.833c12.438,0.351,33.819-8.431,33.199,4.001c-0.532,10.666,0.414,26.166-5.245,25.833
+	c-7.606-0.447-2.954-31.5-19.243-18.899c-7.985,6.177-17.658-5.969-27.377,5.732C118.88,434.066,121.38,417.067,111.547,413.9z
+                          ;
+                          M111.547,415.233c-6.667-0.834-9.667,4.667-13.833,3.333c-19.649-6.291-8.158,22.176-14.5,22.334
+	c-6.667,0.166,2.833-18-13.333-22.167c-29.544-7.615-9.667,43.833-20.167,43.833c-10.333,0,8.004-55.006-16.833-39
+	c-7.5,4.833-9.508-3.78-9.299-7.004c0.799-12.329,23.592-7.153,38.132-7.329c10.234-0.124,20.238-1.505,38.287-2.167
+	c16.642-0.61,32.903,1.125,46.213,1.5c12.438,0.351,35.058-5.579,31.863,6.451c-5.532,20.833,1.25,28.216-4.409,27.883
+	c-7.606-0.447-6.058-37.895-20.62-23.333c-10.167,10.166-15.972-0.747-25,12C119.547,443.568,121.798,416.515,111.547,415.233z
+                          " />
+                    </path>
+                    <rect x="10" y="475.571" fill="#fefae9" width="180" height="4" />
+                </svg>
+                
+                <div class="cake-text">
+                    <h1>happy birthday!</h1>
+                </div>
+                <button id="startCakeAnim" class="cake-animation-button">Mulai Animasi Kue</button>
+            </div>
+            <div class="music-player-container">
+                <h3>HBD Kakak ANA</h3>
+                <div class="custom-audio-player">
+                    <audio id="birthdayAudio" preload="metadata" aria-label="Musik ulang tahun">
+                        <source src="The 1975 - About You (Official) - The1975VEVO.mp3" type="audio/mpeg" />
+                        Browser Anda tidak mendukung elemen audio.
+                    </audio>
+
+                    <div class="player-controls">
+                        <button id="playPauseBtn" class="play-pause-btn" aria-label="Putar atau Jeda"><i class="fas fa-play"></i></button>
+                        <div class="progress-container">
+                            <input type="range" id="progressBar" class="progress-bar" value="0" min="0" max="100" step="0.1" aria-label="Progress lagu">
+                            <div class="time-display">
+                                <span id="currentTime">0:00</span>
+                                <span id="totalDuration">0:00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- New lyrics box -->
+                <div id="lyrics-box"></div>
+
+                <!-- Hidden lyrics for JavaScript to read -->
+                <div id="hidden-lyrics" style="display: none;">
+                    <p data-time="50">I know a place</p>
+                    <p data-time="55">It's somewhere I go when I need to remember your face</p>
+                    <p data-time="64">We get married in our heads</p>
+                    <p data-time="76">Something to do whilst we try to recall how we met</p>
+                    <p data-time="84">Do you think I have forgotten?</p>
+                    <p data-time="89">Do you think I have forgotten?</p>
+                    <p data-time="94">Do you think I have forgotten about you?</p>
+                    <p data-time="105">You and I</p>
+                    <p data-time="109">Were alive</p>
+                    <p data-time="115">With nothing to do I could lay and just look in your eyes</p>
+                    <p data-time="124">Wait and pretend</p>
+                    <p data-time="134">Hold on and hope that we'll find our way back in the end</p>
+                    <p data-time="144">Do you think I have forgotten?</p>
+                    <p data-time="149">Do you think I have forgotten?</p>
+                    <p data-time="154">Do you think I have forgotten about you?</p>
+                    <p data-time="164">Do you think I have forgotten?</p>
+                    <p data-time="169">Do you think I have forgotten?</p>
+                    <p data-time="174">Do you think I have forgotten about you?</p>
+                    <p data-time="185">There was something about you that now I can't remember</p>
+                    <p data-time="189">It's the same damn thing that made my heart surrender</p>
+                    <p data-time="194">And I'll miss you on a train</p>
+                    <p data-time="197">I'll miss you in the morning</p>
+                    <p data-time="199">I never know what to think about, so think about you</p>
+                    <p data-time="204">(I think about you)</p>
+                    <p data-time="209">About you</p>
+                    <p data-time="214">Do you think I have forgotten about you?</p>
+                    <p data-time="224">About you</p>
+                    <p data-time="229">About you</p>
+                    <p data-time="234">Do you think I have forgotten about you?</p>
+                </div>
+
+
+                <p style="font-size: 0.9em; color: var(--text-dark); margin-top: 1rem; text-align: center;">
+                    <span style="font-weight: bold;">Do you think I have forgotten?.</span><br>
+Lagu "About You" memiliki makna seseorang yang tidak pernah melupakan yang ia cintai, baik itu perasaan atau kenangan yang pernah dialami bersama.</p>
+                <figure>
+                    <img src="IMG-20250824-WA0067.jpg" alt="Pasangan muda berpegangan tangan sambil tersenyum di taman dengan latar belakang pepohonan hijau yang cerah" loading="lazy"/>
+                </figure>
+            </div>
+        </section>
+
+        <!-- Galeri Foto -->
+        <section id="galeri" aria-label="Galeri Foto" class="gallery-section">
+            <h2 class="gallery-title">Galeri Foto</h2>
+            <div class="gallery-grid" role="list">
+                <div class="gallery-item" role="listitem" tabindex="0">
+                    <img src="Gambar WhatsApp 2025-08-15 pukul 23.17.54_fbfbe597.jpg" alt="Seorang wanita berdiri di trotoar kota dengan latar belakang bangunan." loading="lazy"/>
+                </div>
+                <div class="gallery-item" role="listitem" tabindex="0">
+                    <img src="IMG-20250406-WA0006.jpg" alt="Seorang wanita duduk santai di trotoar dengan pemandangan kota." loading="lazy"/>
+                </div>
+                <div class="gallery-item" role="listitem" tabindex="0">
+                    <img src="IMG-20250705-WA0068.jpg" alt="Seorang wanita tersenyum di dalam kafe yang nyaman." loading="lazy"/>
+                </div>
+                <div class="gallery-item" role="listitem" tabindex="0">
+                    <img src="Gambar WhatsApp 2025-08-15 pukul 23.17.55_350ebf94.jpg" alt="Pemandangan danau yang tenang dengan pegunungan di kejauhan." loading="lazy"/>
+                </div>
+                <div class="gallery-item" role="listitem" tabindex="0">
+                    <img src="Gambar WhatsApp 2025-08-15 pukul 23.17.55_dfba2f6a.jpg" alt="Perayaan hari raya dengan dekorasi tradisional." loading="lazy"/>
+                </div>
+                <div class="gallery-item" role="listitem" tabindex="0">
+                    <img src="Gambar WhatsApp 2025-08-15 pukul 23.17.52_6f260eb1.jpg" alt="Pemandangan indah Gunung Bromo saat matahari terbit." loading="lazy"/>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kartu Doa -->
+        <section id="kartu-doa" aria-label="Kartu Doa" class="praycards-section">
+            <h2 class="section-title">Kartu Doa</h2>
+            <div class="praycards-container" role="list">
+                <div class="praycard" role="listitem" tabindex="0">Doa 1<br>Semoga kak ana bahagia selalu<i class="fas fa-heart-broken"></i></div>
+                <div class="praycard" role="listitem" tabindex="0">Doa 2<br>Semoga kak ana sehat selalu<i class="fas fa-heart"></i></div>
+                <div class="praycard" role="listitem" tabindex="0">Doa 3<br>Semoga bisa dapetin hal yang selama ini kak ana perjuangin <i class="fas fa-heart"></i></div>
+                <div class="praycard" role="listitem" tabindex="0">Doa 4<br>Semoga dimudahkan segala urusannya, dan dikelilingi orang-orang baik</div>
+                <div class="praycard" role="listitem" tabindex="0">Doa 5<br>Semoga hal-hal baik selalu beriringan</div>
+                <div class="praycard" role="listitem" tabindex="0">Doa 6<br>Semoga tahun ini menjadi tahun yang lebih baik dari tahun sebelumnya</div>
+            </div>
+        </section>
+        <!-- Kartu Harapan -->
+        <section id="kartu-harapan" aria-label="Kartu Harapan" class="praycards-section">
+            <h2 class="section-title">Kartu Harapan</h2>
+            <div class="praycards-container" role="list">
+                <div class="praycard" role="listitem" tabindex="0">Harapan 1<br>Semoga kak ana selalu menemukan alasan untuk tersenyum <i class="fas fa-flower"></i></div>
+                <div class="praycard" role="listitem" tabindex="0">Harapan 2<br>Semoga perjalanan ke depan penuh kejutan indah <i class="fas fa-sparkles"></i></div>
+                <div class="praycard" role="listitem" tabindex="0">Harapan 3<br>Semoga semua cita-cita kakak tercapai <i class="fas fa-star"></i></div>
+                <div class="praycard" role="listitem" tabindex="0">Harapan 4<br>Semoga semakin kuat menghadapi setiap tantangan <i class="fas fa-fist-raised"></i></div>
+            </div>
+        </section>
+
+        <!-- New Effort Section -->
+        <section id="effort-section" class="message-section" aria-label="Tentang usaha pembuatan web ini">
+            <button id="toggleEffortBtn" class="toggle-message-btn">Pesan akhir<i class="fas fa-code"></i></button>
+            <div id="effortContent" class="message-text" aria-hidden="true">
+                <p>
+                    "Web sederhana ini memang nggak seberapa, tapi dibuat dengan sepenuh hati.  
+                    Semoga bisa jadi kenang-kenangan kecil yang bikin kak ana tersenyum.  
+                    Terima kasih untuk semuanya.  
+                    Semoga setiap baris kode di dalamnya bisa nyimpen doa-doa baik buat kak ana 🤍."
+                </p>
+                <!-- Love Slider -->
+                <div class="love-slider-container">
+                    <p>How much do you like this gift?</p>
+                    <input type="range" min="0" max="100" value="0" class="love-slider" id="loveSlider">
+                    <span id="lovePercentageDisplay" class="love-percentage-display">0%</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kotak Pesan -->
+        <section id="pesan" aria-label="Kotak Pesan untuk Pengirim" class="message-box-container">
+            <h2 class="section-title">Kotak Pesan</h2>
+            <form action="https://formspree.io/f/xwpqpddr" method="post" class="message-box-form" id="messageForm" aria-describedby="form-description">
+                <p id="form-description">Silakan tinggalkan pesan atau balasan kakak di sini.</p>
+                <div>
+                    <label for="senderName">Nama Anda:</label>
+                    <input type="text" id="senderName" name="senderName" required minlength="2" maxlength="50" placeholder="Contoh : ANA cantik">
+                    <span id="senderNameError" class="error-message" aria-live="polite"></span>
+                </div>
+                <div>
+                    <label for="messageContent">Isi Pesan:</label>
+                    <textarea id="messageContent" name="messageContent" required minlength="10" maxlength="500" placeholder="Tuliskan pesan di sini..."></textarea>
+                    <span id="messageContentError" aria-live="polite"></span>
+                </div>
+                <input type="hidden" name="lovePercentage" id="lovePercentageInput" value="50">
+                <button type="submit" id="sendMessageBtn">Kirim Pesan</button>
+                <p id="messageStatus" aria-live="polite"></p>
+            </form>
+        </section>
+    </main>
+
+    <script>
+  window.addEventListener("load", function() {
+    const preloader = document.getElementById("preloader");
+    preloader.classList.add("fade-out");
+    setTimeout(() => {
+      preloader.style.display = "none";
+    }, 800); // hilang setelah animasi
+  });
+
+        (() => {
+            // --- Intro Animation Logic ---
+            const introOverlay = document.getElementById('introOverlay');
+            const envelopeContainer = document.getElementById('envelopeContainer');
+            const animatedClickHere = document.getElementById('animatedClickHere'); // Now refers to the button
+
+            // Always show the intro overlay on page load
+            document.body.style.overflow = 'hidden'; // Prevent scrolling during intro
+            introOverlay.style.display = 'flex'; // Ensure overlay is visible
+
+            envelopeContainer.addEventListener('click', () => {
+                envelopeContainer.classList.add('open');
+                // After envelope opens, show the "Klik Here" button with animation
+                setTimeout(() => {
+                    animatedClickHere.classList.add('show');
+                }, 500); // Delay to sync with envelope opening animation (0.5s)
+            });
+
+            animatedClickHere.addEventListener('click', () => {
+                introOverlay.classList.add('fade-out');
+                setTimeout(() => {
+                    introOverlay.style.display = 'none';
+                    document.body.style.overflow = 'auto'; // Re-enable scrolling
+                }, 1000); // Match fade-out duration
+            });
+
+            // --- Hamburger Menu Functionality ---
+            const hamburger = document.getElementById('hamburgerBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            hamburger.addEventListener('click', () => {
+                const expanded = hamburger.getAttribute('aria-expanded') === 'true' || false;
+                hamburger.setAttribute('aria-expanded', !expanded);
+                if (!expanded) {
+                    mobileMenu.style.display = 'block';
+                    mobileMenu.setAttribute('aria-hidden', 'false');
+                    // Set tabindex for accessibility when menu is open
+                    Array.from(mobileMenu.querySelectorAll('a')).forEach(a => a.tabIndex = 0);
+                } else {
+                    mobileMenu.style.display = 'none';
+                    mobileMenu.setAttribute('aria-hidden', 'true');
+                    // Reset tabindex when menu is closed
+                    Array.from(mobileMenu.querySelectorAll('a')).forEach(a => a.tabIndex = -1);
+                }
+            });
+
+            // Close mobile menu when a link is clicked
+            Array.from(mobileMenu.querySelectorAll('a')).forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.style.display = 'none';
+                    mobileMenu.setAttribute('aria-hidden', 'true');
+                    hamburger.setAttribute('aria-expanded', false);
+                    Array.from(mobileMenu.querySelectorAll('a')).forEach(a => a.tabIndex = -1);
+                });
+            });
+
+            // --- Message Box Functionality ---
+            const messageForm = document.getElementById('messageForm');
+            const sendMessageBtn = document.getElementById('sendMessageBtn');
+            const messageStatus = document.getElementById('messageStatus');
+            const messageBoxContainer = document.querySelector('.message-box-container');
+            const senderNameInput = document.getElementById('senderName');
+            const messageContentInput = document.getElementById('messageContent');
+            const senderNameError = document.getElementById('senderNameError');
+            const messageContentError = document.getElementById('messageContentError');
+            const lovePercentageInput = document.getElementById('lovePercentageInput'); // Get the hidden input
+
+            // Add fade-in animation on load for the message box
+            window.addEventListener('load', () => {
+                messageBoxContainer.style.opacity = '1';
+            });
+
+            /**
+             * Displays a validation error message for a given input field.
+             * @param {HTMLElement} errorElement - The span element to display the error.
+             * @param {string} message - The error message to display.
+             */
+            function displayError(errorElement, message) {
+                errorElement.textContent = message;
+                errorElement.style.color = 'var(--error-red)';
+            }
+
+            /**
+             * Clears the validation error message for a given input field.
+             * @param {HTMLElement} errorElement - The span element to clear.
+             */
+            function clearError(errorElement) {
+                errorElement.textContent = '';
+            }
+
+            /**
+             * Validates the form inputs before submission.
+             * @returns {boolean} - True if all inputs are valid, false otherwise.
+             */
+            function validateForm() {
+                let isValid = true;
+
+                // Validate senderName
+                if (senderNameInput.value.length < 2) {
+                    displayError(senderNameError, 'Nama minimal 2 karakter.');
+                    isValid = false;
+                } else if (senderNameInput.value.length > 50) {
+                    displayError(senderNameError, 'Nama maksimal 50 karakter.');
+                    isValid = false;
+                } else {
+                    clearError(senderNameError);
+                }
+
+                // Validate messageContent
+                if (messageContentInput.value.length < 10) {
+                    displayError(messageContentError, 'Pesan minimal 10 karakter.');
+                    isValid = false;
+                } else if (messageContentInput.value.length > 1000) {
+                    displayError(messageContentError, 'Pesan maksimal 1000 karakter.');
+                    isValid = false;
+                } else {
+                    clearError(messageContentError);
+                }
+
+                return isValid;
+            }
+
+            // Add real-time validation feedback on input
+            senderNameInput.addEventListener('input', () => {
+                if (senderNameInput.value.length >= 2 && senderNameInput.value.length <= 50) {
+                    clearError(senderNameError);
+                } else if (senderNameInput.value.length < 2) {
+                    displayError(senderNameError, 'Nama minimal 2 karakter.');
+                } else {
+                    displayError(senderNameError, 'Nama maksimal 50 karakter.');
+                }
+            });
+
+            messageContentInput.addEventListener('input', () => {
+                if (messageContentInput.value.length >= 10 && messageContentInput.value.length <= 1000) {
+                    clearError(messageContentError);
+                } else if (messageContentInput.value.length < 10) {
+                    displayError(messageContentError, 'Pesan minimal 10 karakter.');
+                } else {
+                    displayError(messageContentError, 'Pesan maksimal 1000 karakter.');
+                }
+            });
+
+
+            messageForm.addEventListener('submit', async (e) => {
+                e.preventDefault(); // Prevent default form submission
+
+                // Perform client-side validation
+                if (!validateForm()) {
+                    messageStatus.textContent = "Mohon perbaiki kesalahan pada formulir.";
+                    messageStatus.style.color = "var(--error-red)";
+                    return; // Stop submission if validation fails
+                }
+
+                // Disable button and show loading status
+                sendMessageBtn.disabled = true;
+                sendMessageBtn.innerHTML = '⏳ Mengirim...';
+                messageStatus.textContent = ""; // Clear previous status
+
+                const senderName = senderNameInput.value;
+                const messageContent = messageContentInput.value;
+                const lovePercentage = lovePercentageInput.value; // Get the love percentage value
+
+                try {
+                    const response = await fetch(messageForm.action, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            name: senderName,
+                            message: messageContent,
+                            lovePercentage: lovePercentage // Include love percentage in the payload
+                        })
+                    });
+
+                    if (response.ok) {
+                        sendMessageBtn.innerHTML = '✔️ Terkirim!';
+                        messageStatus.textContent = "Pesan berhasil dikirim! Terima kasih atas pesan kakak.";
+                        messageStatus.style.color = "var(--success-green)";
+                        messageForm.reset(); // Clear the form
+                        clearError(senderNameError); // Clear any lingering errors
+                        clearError(messageContentError);
+                        // Reset love slider to default after successful submission
+                        const loveSlider = document.getElementById('loveSlider');
+                        const lovePercentageDisplay = document.getElementById('lovePercentageDisplay');
+                        loveSlider.value = 50;
+                        lovePercentageDisplay.textContent = '50%';
+                        lovePercentageInput.value = 50;
+                    } else {
+                        const data = await response.json();
+                        let errorMessage = "Gagal mengirim pesan. Silakan coba lagi.";
+                        if (data.errors && data.errors.length > 0) {
+                            // Display specific error messages from Formspree
+                            errorMessage = data.errors.map(error => error.message).join(", ");
+                        } else if (data.error) {
+                            errorMessage = data.error;
+                        }
+                        sendMessageBtn.innerHTML = 'Kirim Pesan'; // Reset button text
+                        messageStatus.textContent = `Error: ${errorMessage}`;
+                        messageStatus.style.color = "var(--error-red)";
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    sendMessageBtn.innerHTML = 'Kirim Pesan'; // Reset button text
+                    messageStatus.textContent = "Terjadi kesalahan jaringan. Periksa koneksi Anda.";
+                    messageStatus.style.color = "var(--error-red)";
+                } finally {
+                    // Re-enable button after a short delay to show final status
+                    setTimeout(() => {
+                        sendMessageBtn.disabled = false;
+                        if (!messageStatus.textContent.includes("berhasil")) { // Only reset if not success
+                            sendMessageBtn.innerHTML = 'Kirim Pesan';
+                        }
+                    }, 2000);
+                }
+            });
+
+            // Add glow effect on focus for inputs and textarea (already present in CSS, but good to keep in mind)
+            const formInputs = messageForm.querySelectorAll('input[type="text"], textarea');
+            formInputs.forEach(input => {
+                input.addEventListener('focus', () => {
+                    input.style.boxShadow = '0 0 0 3px var(--pink-dark), 0 0 8px var(--text-accent)';
+                });
+                input.addEventListener('blur', () => {
+                    input.style.boxShadow = ''; // Clear box-shadow on blur
+                });
+            });
+
+            // --- Cake Animation Control ---
+            const startCakeAnimBtn = document.getElementById('startCakeAnim');
+            const velas = document.querySelector('.velas');
+            const fuegos = document.querySelectorAll('.fuego');
+            const smokeElement = document.querySelector('.smoke'); // Get the smoke element
+
+            let loadingInterval;
+            let dotCount = 0;
+            let animationStarted = false;
+
+            /**
+             * Starts a loading animation on the cake button.
+             */
+            function startLoadingAnimation() {
+                startCakeAnimBtn.disabled = true;
+                loadingInterval = setInterval(() => {
+                    dotCount = (dotCount + 1) % 4;
+                    const dots = '.'.repeat(dotCount);
+                    startCakeAnimBtn.textContent = `Memuat animasi${dots}`;
+                }, 300);
+            }
+
+            /**
+             * Stops the loading animation on the cake button.
+             */
+            function stopLoadingAnimation() {
+                clearInterval(loadingInterval);
+                startCakeAnimBtn.disabled = false;
+            }
+
+            /**
+             * Plays the SVG cake animation sequence.
+             * @returns {Promise<void>} A promise that resolves when all SVG animations are complete.
+             */
+            async function playCakeAnimation() {
+                const animations = [
+                    { element: document.getElementById('bizcocho_1'), duration: 500 },
+                    { element: document.getElementById('relleno_1'), duration: 500 },
+                    { element: document.getElementById('bizcocho_2'), duration: 500 },
+                    { element: document.getElementById('relleno_2'), duration: 500 },
+                    { element: document.getElementById('bizcocho_3'), duration: 300 }
+                ];
+
+                for (const anim of animations) {
+                    if (anim.element && typeof anim.element.beginElement === 'function') {
+                        anim.element.beginElement();
+                        await new Promise(resolve => setTimeout(resolve, anim.duration));
+                    } else {
+                        console.warn(`SVG element with ID '${anim.element ? anim.element.id : 'N/A'}' not found or does not support beginElement(). Skipping animation.`);
+                    }
+                }
+            }
+
+            startCakeAnimBtn.addEventListener('click', async () => {
+                if (!animationStarted) {
+                    startLoadingAnimation();
+                    animationStarted = true;
+
+                    await playCakeAnimation();
+
+                    velas.style.opacity = '1';
+                    velas.style.animation = 'in 500ms ease-out forwards, adjust-velas-position 0.1s linear forwards, showVelas 0.5s ease-out forwards';
+                    fuegos.forEach(fuego => {
+                        fuego.classList.add('animate-fuego');
+                    });
+                    stopLoadingAnimation();
+                    startCakeAnimBtn.textContent = 'Matikan Api';
+                } else {
+                    fuegos.forEach(fuego => {
+                        fuego.classList.remove('animate-fuego');
+                        fuego.style.opacity = '0';
+                    });
+                    velas.style.opacity = '0';
+
+                    // Show smoke effect when fire is turned off
+                    smokeElement.classList.add('show-smoke');
+                    // Remove smoke class after animation duration (2.5s)
+                    setTimeout(() => {
+                        smokeElement.classList.remove('show-smoke');
+                    }, 2500); // Matches the smoke-puff animation duration
+
+                    // Trigger the new particle animation when candles are "blown out"
+                    blowCandle();
+
+                    startCakeAnimBtn.textContent = 'Mulai Animasi Kue';
+                    animationStarted = false;
+                }
+            });
+
+            // --- Image Error Handling for Gallery ---
+            document.querySelectorAll('.gallery-item img').forEach(img => {
+                img.onerror = function() {
+                    this.classList.add('broken-image');
+                    this.alt = 'Gambar tidak dapat dimuat';
+                };
+            });
+
+            // --- Custom Music Player Logic ---
+            const audio = document.getElementById('birthdayAudio');
+            const playPauseBtn = document.getElementById('playPauseBtn');
+            const progressBar = document.getElementById('progressBar');
+            const currentTimeSpan = document.getElementById('currentTime');
+            const totalDurationSpan = document.getElementById('totalDuration');
+            const lyricsBox = document.getElementById('lyrics-box');
+            const hiddenLyricLines = document.querySelectorAll('#hidden-lyrics p');
+
+            function formatTime(seconds) {
+                const minutes = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+            }
+
+            audio.addEventListener('loadedmetadata', () => {
+                totalDurationSpan.textContent = formatTime(audio.duration);
+                progressBar.max = audio.duration;
+            });
+
+            playPauseBtn.addEventListener('click', () => {
+                if (audio.paused) {
+                    audio.play();
+                    playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                } else {
+                    audio.pause();
+                    playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                }
+            });
+
+            audio.addEventListener('timeupdate', () => {
+                progressBar.value = audio.currentTime;
+                currentTimeSpan.textContent = formatTime(audio.currentTime);
+                displayActiveLyric();
+            });
+
+            progressBar.addEventListener('input', () => {
+                audio.currentTime = progressBar.value;
+            });
+
+            function displayActiveLyric() {
+                let activeLyricText = '';
+                for (let i = 0; i < hiddenLyricLines.length; i++) {
+                    const line = hiddenLyricLines[i];
+                    const time = parseFloat(line.dataset.time);
+                    const nextLineTime = i + 1 < hiddenLyricLines.length ? parseFloat(hiddenLyricLines[i + 1].dataset.time) : audio.duration + 1;
+
+                    if (audio.currentTime >= time && audio.currentTime < nextLineTime) {
+                        activeLyricText = line.textContent;
+                        break;
+                    }
+                }
+                lyricsBox.textContent = activeLyricText;
+            }
+
+            audio.addEventListener('ended', () => {
+                playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                progressBar.value = 0;
+                currentTimeSpan.textContent = '0:00';
+                lyricsBox.textContent = '';
+            });
+
+            audio.addEventListener('play', () => {
+                if (audio.currentTime === 0) {
+                    lyricsBox.textContent = '';
+                }
+            });
+
+            // --- Birthday Message Toggle Functionality ---
+            const toggleMessageBtn = document.getElementById('toggleMessageBtn');
+            const birthdayMessageContent = document.getElementById('birthdayMessageContent');
+            let messageVisible = false;
+
+            toggleMessageBtn.addEventListener('click', () => {
+                if (messageVisible) {
+                    birthdayMessageContent.classList.remove('show');
+                    birthdayMessageContent.setAttribute('aria-hidden', 'true');
+                    toggleMessageBtn.innerHTML = 'Lihat Ucapan <i class="fas fa-gift"></i>';
+                } else {
+                    birthdayMessageContent.classList.add('show');
+                    birthdayMessageContent.setAttribute('aria-hidden', 'false');
+                    toggleMessageBtn.innerHTML = 'Sembunyikan Ucapan <i class="fas fa-star"></i>';
+                }
+                messageVisible = !messageVisible;
+            });
+
+            // --- New Effort Section Toggle Functionality ---
+            const toggleEffortBtn = document.getElementById('toggleEffortBtn');
+            const effortContent = document.getElementById('effortContent');
+            let effortVisible = false;
+
+            toggleEffortBtn.addEventListener('click', () => {
+                if (effortVisible) {
+                    effortContent.classList.remove('show');
+                    effortContent.setAttribute('aria-hidden', 'true');
+                    toggleEffortBtn.innerHTML = 'Pesan akhir<i class="fas fa-code"></i>';
+                } else {
+                    effortContent.classList.add('show');
+                    effortContent.setAttribute('aria-hidden', 'false');
+                    toggleEffortBtn.innerHTML = 'Sembunyikan Pesan akhir <i class="fas fa-code"></i>';
+                }
+                effortVisible = !effortVisible;
+            });
+
+            // --- Love Slider Functionality ---
+            const loveSlider = document.getElementById('loveSlider');
+            const lovePercentageDisplay = document.getElementById('lovePercentageDisplay');
+            // lovePercentageInput is already defined above in Message Box Functionality
+
+            loveSlider.addEventListener('input', () => {
+                const value = loveSlider.value;
+                lovePercentageDisplay.textContent = `${value}%`;
+                lovePercentageInput.value = value; // Update hidden input value
+            });
+
+            // --- Canvas Animation Script ---
+            const canvas = document.getElementById('animationCanvas');
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            let hearts = [];
+            let confetti = [];
+            let animationFrameId;
+
+            function setCanvasSize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            setCanvasSize();
+            window.addEventListener('resize', setCanvasSize);
+
+            function random(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+
+            const colors = ['#FF69B4', '#FF1493', '#FFD700', '#FFFFFF', '#FF4500']; // HotPink, DeepPink, Gold, White, OrangeRed
+
+            class Particle {
+                constructor(x, y, color, velocity) {
+                    this.x = x;
+                    this.y = y;
+                    this.color = color;
+                    this.velocity = {
+                        x: velocity.x,
+                        y: velocity.y
+                    };
+                    this.alpha = 1;
+                    this.friction = 0.99;
+                    this.gravity = 0.05;
+                }
+
+                draw() {
+                    ctx.save();
+                    ctx.globalAlpha = this.alpha;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, 1.5, 0, Math.PI * 2, false);
+                    ctx.fillStyle = this.color;
+                    ctx.fill();
+                    ctx.restore();
+                }
+
+                update() {
+                    this.velocity.x *= this.friction;
+                    this.velocity.y *= this.friction;
+                    this.velocity.y += this.gravity;
+                    this.x += this.velocity.x;
+                    this.y += this.velocity.y;
+                    this.alpha -= 0.005;
+                }
+            }
+
+            class Firework {
+                constructor(x, y, radius, color, velocity) {
+                    this.x = x;
+                    this.y = y;
+                    this.radius = radius;
+                    this.color = color;
+                    this.velocity = velocity;
+                    this.alpha = 1;
+                    this.particles = [];
+                    this.exploded = false;
+                }
+
+                draw() {
+                    if (!this.exploded) {
+                        ctx.save();
+                        ctx.globalAlpha = this.alpha;
+                        ctx.beginPath();
+                        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+                        ctx.fillStyle = this.color;
+                        ctx.fill();
+                        ctx.restore();
+                    }
+                }
+
+                update() {
+                    if (!this.exploded) {
+                        this.x += this.velocity.x;
+                        this.y += this.velocity.y;
+                        this.velocity.y += 0.02;
+                        this.alpha -= 0.005;
+
+                        if (this.velocity.y >= 0 || this.alpha <= 0.2) {
+                            this.explode();
+                            this.exploded = true;
+                        }
+                    }
+                    this.particles.forEach((particle, index) => {
+                        if (particle.alpha <= 0.05) {
+                            this.particles.splice(index, 1);
+                        } else {
+                            particle.update();
+                        }
+                    });
+                }
+
+                explode() {
+                    const particleCount = 200;
+                    for (let i = 0; i < particleCount; i++) {
+                        const angle = Math.random() * Math.PI * 2;
+                        const speed = random(2, 7);
+                        const velocity = {
+                            x: Math.cos(angle) * speed,
+                            y: Math.sin(angle) * speed
+                        };
+                        this.particles.push(new Particle(this.x, this.y, this.color, velocity));
+                    }
+                }
+            }
+
+            class Heart {
+                constructor(x, y, size, color, velocity) {
+                    this.x = x;
+                    this.y = y;
+                    this.size = size;
+                    this.color = color;
+                    this.velocity = velocity;
+                    this.alpha = 1;
+                    this.rotation = random(0, Math.PI * 2);
+                    this.rotationSpeed = random(-0.05, 0.05);
+                    this.gravity = 0.05;
+                }
+
+                draw() {
+                    ctx.save();
+                    ctx.globalAlpha = this.alpha;
+                    ctx.translate(this.x, this.y);
+                    ctx.rotate(this.rotation);
+                    ctx.fillStyle = this.color;
+                    ctx.beginPath();
+                    ctx.moveTo(0, this.size * 0.4);
+                    ctx.bezierCurveTo(this.size * 0.5, -this.size * 0.2, this.size, this.size * 0.3, 0, this.size);
+                    ctx.bezierCurveTo(-this.size, this.size * 0.3, -this.size * 0.5, -this.size * 0.2, 0, this.size * 0.4);
+                    ctx.closePath();
+                    ctx.fill();
+                    ctx.restore();
+                }
+
+                update() {
+                    this.velocity.y += this.gravity;
+                    this.x += this.velocity.x;
+                    this.y += this.velocity.y;
+                    this.alpha -= 0.004;
+                    this.rotation += this.rotationSpeed;
+                }
+            }
+
+            class Confetti {
+                constructor(x, y, size, color, velocity) {
+                    this.x = x;
+                    this.y = y;
+                    this.size = size;
+                    this.color = color;
+                    this.velocity = velocity;
+                    this.alpha = 1;
+                    this.rotation = random(0, Math.PI * 2);
+                    this.rotationSpeed = random(-0.1, 0.1);
+                    this.gravity = 0.1;
+                    this.shape = Math.random() > 0.5 ? 'square' : 'circle';
+                }
+
+                draw() {
+                    ctx.save();
+                    ctx.globalAlpha = this.alpha;
+                    ctx.translate(this.x, this.y);
+                    ctx.rotate(this.rotation);
+                    ctx.fillStyle = this.color;
+                    ctx.beginPath();
+                    if (this.shape === 'square') {
+                        ctx.rect(-this.size / 2, -this.size / 2, this.size, this.size);
+                    } else {
+                        ctx.arc(0, 0, this.size / 2, 0, Math.PI * 2);
+                    }
+                    ctx.fill();
+                    ctx.restore();
+                }
+
+                update() {
+                    this.velocity.y += this.gravity;
+                    this.x += this.velocity.x;
+                    this.y += this.velocity.y;
+                    this.alpha -= 0.006;
+                    this.rotation += this.rotationSpeed;
+                }
+            }
+
+            let fireworks = [];
+            let activeHearts = []; // New array for hearts from candle blow
+            let activeConfetti = []; // New array for confetti from candle blow
+
+            function animate() {
+                animationFrameId = requestAnimationFrame(animate);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                fireworks.forEach((firework, index) => {
+                    firework.update();
+                    firework.draw();
+                    if (firework.exploded && firework.particles.length === 0) {
+                        fireworks.splice(index, 1);
+                    }
+                });
+
+                hearts.forEach((heart, index) => {
+                    heart.update();
+                    heart.draw();
+                    if (heart.alpha <= 0.05 || heart.y > canvas.height) {
+                        hearts.splice(index, 1);
+                    }
+                });
+
+                confetti.forEach((c, index) => {
+                    c.update();
+                    c.draw();
+                    if (c.alpha <= 0.05 || c.y > canvas.height) {
+                        confetti.splice(index, 1);
+                    }
+                });
+
+                // Update and draw hearts from candle blow
+                activeHearts.forEach((heart, index) => {
+                    heart.update();
+                    heart.draw();
+                    if (heart.alpha <= 0.05 || heart.y > canvas.height) {
+                        activeHearts.splice(index, 1);
+                    }
+                });
+
+                // Update and draw confetti from candle blow
+                activeConfetti.forEach((c, index) => {
+                    c.update();
+                    c.draw();
+                    if (c.alpha <= 0.05 || c.y > canvas.height) {
+                        activeConfetti.splice(index, 1);
+                    }
+                });
+            }
+
+            function spawnFirework() {
+                const x = random(canvas.width * 0.2, canvas.width * 0.8);
+                const y = canvas.height;
+                const color = colors[Math.floor(random(0, colors.length))];
+                const velocity = {
+                    x: random(-1, 1),
+                    y: random(-10, -15)
+                };
+                fireworks.push(new Firework(x, y, 3, color, velocity));
+            }
+
+            function spawnHeart() {
+                const x = random(0, canvas.width);
+                const y = random(canvas.height * 0.7, canvas.height * 0.9);
+                const size = random(15, 35);
+                const color = colors[Math.floor(random(0, colors.length))];
+                const velocity = {
+                    x: random(-1, 1),
+                    y: random(-8, -15)
+                };
+                hearts.push(new Heart(x, y, size, color, velocity));
+            }
+
+            function spawnConfetti() {
+                const x = random(0, canvas.width);
+                const y = random(0, canvas.height * 0.2);
+                const size = random(8, 18);
+                const color = colors[Math.floor(random(0, colors.length))];
+                const velocity = {
+                    x: random(-2, 2),
+                    y: random(3, 8)
+                };
+                confetti.push(new Confetti(x, y, size, color, velocity));
+            }
+
+            let fireworkInterval, heartInterval, confettiInterval;
+
+            function startIntroAnimations() {
+                animate(); // Start the animation loop
+
+                for (let i = 0; i < 5; i++) {
+                    spawnFirework();
+                }
+                for (let i = 0; i < 10; i++) {
+                    spawnHeart();
+                }
+                for (let i = 0; i < 20; i++) {
+                    spawnConfetti();
+                }
+
+                fireworkInterval = setInterval(() => {
+                    spawnFirework();
+                }, random(200, 800));
+
+                heartInterval = setInterval(() => {
+                    spawnHeart();
+                }, random(50, 300));
+
+                confettiInterval = setInterval(() => {
+                    spawnConfetti();
+                }, random(20, 150));
+
+                setTimeout(() => {
+                    clearInterval(fireworkInterval);
+                    clearInterval(heartInterval);
+                    clearInterval(confettiInterval);
+                    setTimeout(() => {
+                        canvas.classList.add('hidden');
+                        setTimeout(() => {
+                            // Only cancel animation frame if no other animations are active
+                            if (fireworks.length === 0 && hearts.length === 0 && confetti.length === 0 && activeHearts.length === 0 && activeConfetti.length === 0) {
+                                cancelAnimationFrame(animationFrameId);
+                                canvas.style.display = 'none';
+                            }
+                        }, 1000);
+                    }, 1000);
+                }, 10000);
+            }
+
+            // Start canvas animations immediately when the page loads
+            window.addEventListener('load', startIntroAnimations);
+
+            // --- New blowCandle function for particle effects ---
+            function blowCandle() {
+                canvas.style.display = 'block'; // Ensure canvas is visible
+                canvas.classList.remove('hidden'); // Ensure canvas is not hidden
+
+                const cakeContainer = document.querySelector('.cake-container');
+                const cakeRect = cakeContainer.getBoundingClientRect();
+
+                // Calculate the center of the cake container relative to the canvas
+                const centerX = cakeRect.left + cakeRect.width / 2;
+                const centerY = cakeRect.top + cakeRect.height / 2;
+
+                // Spawn particles (circles)
+                for (let i = 0; i < 100; i++) {
+                    const angle = random(0, Math.PI * 2);
+                    const speed = random(2, 8);
+                    const velocity = {
+                        x: Math.cos(angle) * speed,
+                        y: Math.sin(angle) * speed
+                    };
+                    activeConfetti.push(new Confetti(centerX, centerY, random(5, 15), colors[Math.floor(random(0, colors.length))], velocity));
+                }
+
+                // Spawn hearts
+                for (let i = 0; i < 50; i++) {
+                    const angle = random(0, Math.PI * 2);
+                    const speed = random(1, 6);
+                    const velocity = {
+                        x: Math.cos(angle) * speed,
+                        y: Math.sin(angle) * speed
+                    };
+                    activeHearts.push(new Heart(centerX, centerY, random(10, 25), colors[Math.floor(random(0, colors.length))], velocity));
+                }
+
+                // Ensure animation loop is running
+                if (!animationFrameId) {
+                    animate();
+                }
+
+                // Fade out the canvas after a duration if no other animations are active
+                setTimeout(() => {
+                    if (fireworks.length === 0 && hearts.length === 0 && confetti.length === 0 && activeHearts.length === 0 && activeConfetti.length === 0) {
+                        canvas.classList.add('hidden');
+                        setTimeout(() => {
+                            canvas.style.display = 'none';
+                            cancelAnimationFrame(animationFrameId);
+                            animationFrameId = null; // Reset animation frame ID
+                        }, 1000); // Matches CSS transition duration
+                    }
+                }, 3000); // Animation duration for the new particles
+            }
+
+        })();
+    </script>
+</body>
+</html>
